@@ -3,19 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>賃貸の初期費用シミュレーター｜おひっこし計算帯</title>
-<meta name="description" content="家賃・敷金・礼金などを入力するだけで、引っ越しにかかる初期費用の合計をその場で計算できる無料シミュレーターです。仲介手数料や保証会社利用料の目安もまとめて確認できます。">
-<link rel="canonical" href="https://example.com/chintai-shokihi-simulator.html">
+<title>新生活の総費用シミュレーター｜おひっこし計算帯</title>
+<meta name="description" content="新卒・転勤・同棲・ファミリーなど、あなたの状況に合わせて引っ越しの初期費用と、引っ越し後の月々の生活費（光熱費・食費）まで無料で計算できるシミュレーターです。">
+<link rel="canonical" href="https://example.com/shinseikatsu-simulator.html">
 
-<!-- OGP（SNSでシェアされた際のプレビュー用） -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="賃貸の初期費用シミュレーター｜おひっこし計算帯">
-<meta property="og:description" content="家賃を入力するだけで、引っ越しの初期費用の合計をその場で計算。敷金・礼金・仲介手数料・保証会社利用料までまとめて目安がわかります。">
-<meta property="og:url" content="https://example.com/chintai-shokihi-simulator.html">
+<meta property="og:title" content="新生活の総費用シミュレーター｜おひっこし計算帯">
+<meta property="og:description" content="新卒・転勤・同棲・ファミリーなど、あなたの状況に合わせて初期費用と月々の生活費までまとめて計算できます。">
+<meta property="og:url" content="https://example.com/shinseikatsu-simulator.html">
 <meta property="og:site_name" content="おひっこし計算帯">
 <meta name="twitter:card" content="summary">
 
-<!-- favicon（絵文字ベースの軽量版。後で画像に差し替え可） -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
 
 <style>
@@ -30,10 +28,9 @@
     --brass: #B8863A;
     --line: #DAD2BB;
     --line-soft: #EAE4D2;
-    --danger: #A6452F;
   }
   *{ box-sizing: border-box; }
-  <meta name="google-site-verification" content="q5HrNozMAgW_-tkq-ryqjWP2e7V27TXD897LgVPdLkw" />
+    <meta name="google-site-verification" content="q5HrNozMAgW_-tkq-ryqjWP2e7V27TXD897LgVPdLkw" />
   body{
     margin:0;
     background: var(--paper);
@@ -48,12 +45,8 @@
   }
   a{ color: var(--accent); }
 
-  /* ---- layout shell ---- */
-  .page{
-    max-width: 1040px;
-    margin: 0 auto;
-    padding: 32px 20px 80px;
-  }
+  .page{ max-width: 1040px; margin: 0 auto; padding: 32px 20px 80px; }
+
   header.hero{
     padding: 8px 0 28px;
     border-bottom: 1px solid var(--line);
@@ -65,12 +58,7 @@
     margin: 0 0 8px;
     letter-spacing: -0.01em;
   }
-  header.hero p{
-    margin: 0;
-    color: var(--ink-soft);
-    font-size: 15px;
-    max-width: 46em;
-  }
+  header.hero p{ margin: 0; color: var(--ink-soft); font-size: 15px; max-width: 46em; }
 
   .ad-slot{
     border: 1px dashed var(--line);
@@ -80,35 +68,70 @@
     text-align: center;
     padding: 14px 8px;
     margin: 24px 0;
-    letter-spacing: 0.02em;
-  }
-  .ad-slot span{ opacity: 0.8; }
-
-  .layout{
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 28px;
-    align-items: start;
-  }
-  @media (max-width: 780px){
-    .layout{ grid-template-columns: 1fr; }
   }
 
-  /* ---- form card ---- */
-  .form-card{
+  section.block{
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 6px;
-    padding: 26px 26px 8px;
+    padding: 26px;
+    margin-bottom: 24px;
   }
-  .form-card h2, .receipt h2{
-    font-size: 13px;
+  section.block h2{
+    font-size: 15px;
     font-weight: 700;
-    color: var(--ink-soft);
-    margin: 0 0 18px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--line-soft);
+    color: var(--ink);
+    margin: 0 0 6px;
   }
+  section.block .sub{
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin: 0 0 18px;
+  }
+
+  /* ---- profile / tile selectors ---- */
+  .tiles{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .tiles.tiles-3{ grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 700px){
+    .tiles{ grid-template-columns: repeat(2, 1fr); }
+  }
+  .tile{
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 14px 12px;
+    cursor: pointer;
+    text-align: left;
+    background: var(--paper);
+    transition: border-color .12s, background .12s;
+  }
+  .tile input{ position:absolute; opacity:0; pointer-events:none; }
+  .tile .emoji{ font-size: 20px; display:block; margin-bottom: 6px; }
+  .tile .name{ font-size: 13.5px; font-weight: 700; display:block; margin-bottom: 2px; }
+  .tile .desc{ font-size: 11.5px; color: var(--ink-faint); display:block; line-height: 1.4; }
+  .tile.selected{ border-color: var(--accent); background: var(--accent-soft); }
+
+  .row-select{
+    display:flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .row-select label{ font-size: 13px; color: var(--ink-soft); display:block; margin-bottom: 6px; }
+  .row-select select{
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--paper);
+    font-size: 14px;
+    color: var(--ink);
+    min-width: 180px;
+  }
+
+  /* ---- form fields (reused style) ---- */
   .field{
     display:flex;
     align-items:center;
@@ -118,22 +141,9 @@
     border-bottom: 1px solid var(--line-soft);
   }
   .field:last-child{ border-bottom: none; }
-  .field label{
-    font-size: 14px;
-    color: var(--ink);
-  }
-  .field .hint{
-    display:block;
-    font-size: 11.5px;
-    color: var(--ink-faint);
-    margin-top: 2px;
-  }
-  .field .input-wrap{
-    display:flex;
-    align-items: baseline;
-    gap: 6px;
-    flex-shrink: 0;
-  }
+  .field label{ font-size: 14px; color: var(--ink); }
+  .field .hint{ display:block; font-size: 11.5px; color: var(--ink-faint); margin-top: 2px; }
+  .field .input-wrap{ display:flex; align-items: baseline; gap: 6px; flex-shrink: 0; }
   .field input{
     width: 108px;
     text-align: right;
@@ -144,70 +154,60 @@
     color: var(--ink);
     background: var(--paper);
   }
-  .field input:focus{
-    outline: none;
-    border-color: var(--accent);
-    background: #fff;
-  }
-  .field .unit{
-    font-size: 13px;
-    color: var(--ink-soft);
-    width: 2.4em;
-  }
+  .field input:focus{ outline: none; border-color: var(--accent); background: #fff; }
+  .field .unit{ font-size: 13px; color: var(--ink-soft); width: 2.4em; }
 
-  /* ---- receipt card ---- */
-  .receipt{
+  .layout{
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  @media (max-width: 780px){ .layout{ grid-template-columns: 1fr; } }
+
+  /* ---- receipt ---- */
+  .receipt{ position: sticky; top: 24px; }
+  .receipt-inner{
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 6px;
-    padding: 26px 26px 22px;
-    position: sticky;
-    top: 24px;
+    padding: 22px 24px 20px;
+    margin-bottom: 18px;
   }
-  .line-item{
-    display:flex;
-    align-items: baseline;
-    gap: 8px;
-    padding: 8px 0;
-    font-size: 14px;
+  .receipt-inner h3{
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line-soft);
   }
+  .line-item{ display:flex; align-items: baseline; gap: 8px; padding: 6px 0; font-size: 13.5px; }
   .line-item .name{ color: var(--ink-soft); white-space: nowrap; }
-  .leader{
-    flex: 1;
-    border-bottom: 1px dotted var(--line);
-    margin-bottom: 4px;
-  }
+  .leader{ flex: 1; border-bottom: 1px dotted var(--line); margin-bottom: 4px; }
   .line-item .amount{ white-space: nowrap; }
-  .receipt .total{
-    display:flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-top: 14px;
-    padding-top: 16px;
-    border-top: 2px solid var(--ink);
+  .line-item .amount::before{ content: "¥"; font-size: 11px; color: var(--ink-faint); }
+  .receipt-inner .total{
+    display:flex; justify-content: space-between; align-items: baseline;
+    margin-top: 12px; padding-top: 14px; border-top: 2px solid var(--ink);
   }
-  .receipt .total .label{
-    font-size: 14px;
-    font-weight: 700;
-  }
-  .receipt .total .value{
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--brass);
-  }
-  .receipt .total .value::before{ content: "¥"; font-size: 16px; margin-right: 2px; }
-  .line-item .amount::before{ content: "¥"; font-size: 12px; color: var(--ink-faint); }
+  .receipt-inner .total .label{ font-size: 13.5px; font-weight: 700; }
+  .receipt-inner .total .value{ font-size: 22px; font-weight: 700; color: var(--brass); }
+  .receipt-inner .total .value::before{ content: "¥"; font-size: 14px; margin-right: 2px; }
 
-  .months-ref{
-    margin-top: 18px;
-    padding-top: 14px;
-    border-top: 1px solid var(--line-soft);
-    font-size: 12.5px;
-    color: var(--ink-faint);
+  .grand-total{
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 6px;
+    padding: 20px 24px;
   }
+  .grand-total .label{ font-size: 13px; opacity: .8; margin-bottom: 4px; }
+  .grand-total .value{ font-size: 28px; font-weight: 700; }
+  .grand-total .value::before{ content: "¥"; font-size: 17px; margin-right: 2px; opacity: .8; }
+  .grand-total .breakdown{ font-size: 12px; opacity: .75; margin-top: 8px; }
 
   .disclaimer{
-    margin-top: 28px;
+    margin-top: 10px;
     font-size: 12.5px;
     color: var(--ink-faint);
     border-left: 3px solid var(--line);
@@ -215,58 +215,28 @@
     background: var(--accent-soft);
   }
 
-  .article{
-    margin-top: 40px;
-    padding-top: 28px;
-    border-top: 1px solid var(--line);
-    max-width: 42em;
-  }
-  .article h2{
-    font-size: 19px;
-    font-weight: 700;
-    margin: 0 0 16px;
-  }
-  .article h3{
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--accent);
-    margin: 24px 0 8px;
-  }
-  .article p{
-    font-size: 14.5px;
-    color: var(--ink-soft);
-    margin: 0 0 4px;
-  }
+  .article{ margin-top: 8px; max-width: 42em; }
+  .article h2{ font-size: 19px; font-weight: 700; margin: 0 0 16px; }
+  .article h3{ font-size: 15px; font-weight: 700; color: var(--accent); margin: 24px 0 8px; }
+  .article p, .article li{ font-size: 14.5px; color: var(--ink-soft); }
+  .article ul { padding-left: 1.3em; }
+  .source-list{ font-size: 12px; color: var(--ink-faint); margin-top: 20px; }
+  .source-list li{ font-size: 12px; color: var(--ink-faint); }
 
   footer{
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
-    font-size: 12.5px;
-    color: var(--ink-faint);
-    display:flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
+    margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line);
+    font-size: 12.5px; color: var(--ink-faint);
+    display:flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
   }
 
-  /* mobile sticky total bar */
-  .sticky-total{
-    display:none;
-  }
+  .sticky-total{ display:none; }
   @media (max-width: 780px){
     .receipt{ position: static; }
     .sticky-total{
-      display:flex;
-      position: fixed;
-      left:0; right:0; bottom:0;
-      background: var(--card);
-      border-top: 1px solid var(--line);
-      padding: 12px 18px;
-      justify-content: space-between;
-      align-items: baseline;
-      box-shadow: 0 -6px 16px rgba(34,48,31,0.06);
-      z-index: 10;
+      display:flex; position: fixed; left:0; right:0; bottom:0;
+      background: var(--card); border-top: 1px solid var(--line);
+      padding: 12px 18px; justify-content: space-between; align-items: baseline;
+      box-shadow: 0 -6px 16px rgba(34,48,31,0.06); z-index: 10;
     }
     .sticky-total .label{ font-size: 13px; color: var(--ink-soft); }
     .sticky-total .value{ font-size: 20px; font-weight: 700; color: var(--brass); }
@@ -280,213 +250,362 @@
 <div class="page">
 
   <header class="hero">
-    <h1>賃貸の初期費用シミュレーター</h1>
-    <p>家賃と条件を入力すると、引っ越しにかかる初期費用の目安をその場で計算します。入力するとすぐに右側の明細が更新されます。</p>
+    <h1>新生活の総費用シミュレーター</h1>
+    <p>新卒・転勤・同棲・ファミリーなど、あなたの状況を選ぶと、引っ越しの初期費用と、引っ越し後の月々の生活費（光熱費・食費）の目安をまとめて計算します。</p>
   </header>
 
-  <div class="ad-slot"><span>広告スペース（ここに広告タグを設置）</span></div>
+  <div class="ad-slot">広告スペース（ここに広告タグを設置）</div>
+
+  <!-- ① プロフィール選択 -->
+  <section class="block">
+    <h2>① あなたに近いのは？</h2>
+    <p class="sub">選ぶと、家具家電の購入費や引っ越し業者費用の目安が自動で切り替わります（後から自由に金額を調整できます）</p>
+    <div class="tiles" id="profile-tiles">
+      <label class="tile" data-profile="shinsotsu">
+        <input type="radio" name="profile" value="shinsotsu" checked>
+        <span class="emoji">🎓</span>
+        <span class="name">新卒・一人暮らし</span>
+        <span class="desc">実家や寮を出て、初めて家具家電を一式そろえる</span>
+      </label>
+      <label class="tile" data-profile="tenkin">
+        <input type="radio" name="profile" value="tenkin">
+        <span class="emoji">💼</span>
+        <span class="name">転勤・単身赴任</span>
+        <span class="desc">すでに家具家電を持っていて、買い足し中心</span>
+      </label>
+      <label class="tile" data-profile="dousei">
+        <input type="radio" name="profile" value="dousei">
+        <span class="emoji">🏡</span>
+        <span class="name">同棲・二人暮らし</span>
+        <span class="desc">二人分を新調、または持ち寄りで調整</span>
+      </label>
+      <label class="tile" data-profile="family">
+        <input type="radio" name="profile" value="family">
+        <span class="emoji">👨‍👩‍👧</span>
+        <span class="name">ファミリー</span>
+        <span class="desc">子どもを含む世帯での引っ越し</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- ② 地域・引っ越し条件 -->
+  <section class="block">
+    <h2>② 引っ越し先の地域・条件</h2>
+    <p class="sub">光熱費は気候によって、引っ越し業者費用は距離・時期によって変わります</p>
+
+    <div class="row-select" style="margin-bottom:18px;">
+      <div>
+        <label for="climate">引っ越し先の気候区分</label>
+        <select id="climate">
+          <option value="cold">寒冷地（北海道・東北）</option>
+          <option value="standard" selected>標準（関東・中部・近畿・中国・四国）</option>
+          <option value="warm">温暖地（九州・沖縄）</option>
+        </select>
+      </div>
+      <div>
+        <label for="distance">引っ越しの移動距離</label>
+        <select id="distance">
+          <option value="near">近距離（同市内〜50km程度）</option>
+          <option value="mid" selected>中距離（同一地方内・500km未満）</option>
+          <option value="far">長距離（500km以上）</option>
+        </select>
+      </div>
+      <div>
+        <label for="season">引っ越し時期</label>
+        <select id="season">
+          <option value="normal" selected>通常期（5月〜1月）</option>
+          <option value="peak">繁忙期（2月〜4月）</option>
+        </select>
+      </div>
+    </div>
+  </section>
 
   <div class="layout">
 
-    <section class="form-card">
-      <h2>物件の条件</h2>
+    <div>
+      <!-- ③ 賃貸の条件 -->
+      <section class="block">
+        <h2>③ 賃貸の契約条件</h2>
+        <p class="sub">物件の家賃と契約条件を入力してください</p>
 
-      <div class="field">
-        <div>
-          <label for="yachin">家賃</label>
+        <div class="field">
+          <div><label for="yachin">家賃</label></div>
+          <div class="input-wrap"><input type="number" id="yachin" value="80000" min="0" step="1000"><span class="unit">円</span></div>
         </div>
-        <div class="input-wrap">
-          <input type="number" id="yachin" value="80000" min="0" step="1000">
-          <span class="unit">円</span>
+        <div class="field">
+          <div><label for="kanrihi">管理費・共益費</label><span class="hint">前家賃・仲介手数料の計算に含みます</span></div>
+          <div class="input-wrap"><input type="number" id="kanrihi" value="5000" min="0" step="500"><span class="unit">円</span></div>
         </div>
+        <div class="field">
+          <div><label for="shikikin">敷金</label></div>
+          <div class="input-wrap"><input type="number" id="shikikin" value="1" min="0" step="0.5"><span class="unit">ヶ月</span></div>
+        </div>
+        <div class="field">
+          <div><label for="reikin">礼金</label></div>
+          <div class="input-wrap"><input type="number" id="reikin" value="1" min="0" step="0.5"><span class="unit">ヶ月</span></div>
+        </div>
+        <div class="field">
+          <div><label for="chukai">仲介手数料</label><span class="hint">税込で計算</span></div>
+          <div class="input-wrap"><input type="number" id="chukai" value="1" min="0" step="0.5"><span class="unit">ヶ月</span></div>
+        </div>
+        <div class="field">
+          <div><label for="maeyachin">前家賃</label></div>
+          <div class="input-wrap"><input type="number" id="maeyachin" value="1" min="0" step="0.5"><span class="unit">ヶ月</span></div>
+        </div>
+        <div class="field">
+          <div><label for="hosho">保証会社利用料</label><span class="hint">家賃に対する割合が目安</span></div>
+          <div class="input-wrap"><input type="number" id="hosho" value="50" min="0" step="5"><span class="unit">%</span></div>
+        </div>
+        <div class="field">
+          <div><label for="kasai">火災保険料</label></div>
+          <div class="input-wrap"><input type="number" id="kasai" value="20000" min="0" step="1000"><span class="unit">円</span></div>
+        </div>
+        <div class="field">
+          <div><label for="kagi">鍵交換費用</label></div>
+          <div class="input-wrap"><input type="number" id="kagi" value="20000" min="0" step="1000"><span class="unit">円</span></div>
+        </div>
+      </section>
+
+      <!-- ④ 家具家電・引っ越し業者 -->
+      <section class="block">
+        <h2>④ 家具家電・引っ越し業者費用</h2>
+        <p class="sub">①②の選択に応じた目安を自動入力しています。実際の見積もりに合わせて調整してください</p>
+
+        <div class="field">
+          <div><label for="kagukaden">家具・家電の購入費用</label><span class="hint">プロフィールに応じた目安（自動入力・編集可）</span></div>
+          <div class="input-wrap"><input type="number" id="kagukaden" value="250000" min="0" step="5000"><span class="unit">円</span></div>
+        </div>
+        <div class="field">
+          <div><label for="hikkoshi">引っ越し業者費用</label><span class="hint">距離・時期に応じた目安（自動入力・編集可）</span></div>
+          <div class="input-wrap"><input type="number" id="hikkoshi" value="65000" min="0" step="5000"><span class="unit">円</span></div>
+        </div>
+        <div class="field">
+          <div><label for="sonota">その他費用</label><span class="hint">消毒・害虫駆除・サポート費用など</span></div>
+          <div class="input-wrap"><input type="number" id="sonota" value="0" min="0" step="1000"><span class="unit">円</span></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="receipt">
+
+      <div class="receipt-inner">
+        <h3>初期費用の明細</h3>
+        <div class="line-item"><span class="name">敷金</span><span class="leader"></span><span class="amount mono" id="out-shikikin">0</span></div>
+        <div class="line-item"><span class="name">礼金</span><span class="leader"></span><span class="amount mono" id="out-reikin">0</span></div>
+        <div class="line-item"><span class="name">仲介手数料（税込）</span><span class="leader"></span><span class="amount mono" id="out-chukai">0</span></div>
+        <div class="line-item"><span class="name">前家賃・前管理費</span><span class="leader"></span><span class="amount mono" id="out-maeyachin">0</span></div>
+        <div class="line-item"><span class="name">保証会社利用料</span><span class="leader"></span><span class="amount mono" id="out-hosho">0</span></div>
+        <div class="line-item"><span class="name">火災保険料</span><span class="leader"></span><span class="amount mono" id="out-kasai">0</span></div>
+        <div class="line-item"><span class="name">鍵交換費用</span><span class="leader"></span><span class="amount mono" id="out-kagi">0</span></div>
+        <div class="line-item"><span class="name">家具・家電</span><span class="leader"></span><span class="amount mono" id="out-kagukaden">0</span></div>
+        <div class="line-item"><span class="name">引っ越し業者</span><span class="leader"></span><span class="amount mono" id="out-hikkoshi">0</span></div>
+        <div class="line-item"><span class="name">その他</span><span class="leader"></span><span class="amount mono" id="out-sonota">0</span></div>
+        <div class="total"><span class="label">初期費用 合計</span><span class="value mono" id="out-total-initial">0</span></div>
       </div>
 
-      <div class="field">
-        <div>
-          <label for="kanrihi">管理費・共益費</label>
-          <span class="hint">前家賃・仲介手数料の計算に含めます</span>
-        </div>
-        <div class="input-wrap">
-          <input type="number" id="kanrihi" value="5000" min="0" step="500">
-          <span class="unit">円</span>
-        </div>
+      <div class="receipt-inner">
+        <h3>月々の生活費の目安</h3>
+        <div class="line-item"><span class="name">家賃・管理費</span><span class="leader"></span><span class="amount mono" id="out-monthly-rent">0</span></div>
+        <div class="line-item"><span class="name">光熱費</span><span class="leader"></span><span class="amount mono" id="out-monthly-utility">0</span></div>
+        <div class="line-item"><span class="name">食費</span><span class="leader"></span><span class="amount mono" id="out-monthly-food">0</span></div>
+        <div class="total"><span class="label">月々の生活費 合計</span><span class="value mono" id="out-total-monthly">0</span></div>
+        <p style="font-size:11.5px; color:var(--ink-faint); margin: 10px 0 0;">※光熱費は気候区分・世帯人数、食費は世帯人数の全国平均をもとにした概算です。総務省統計によると食費の地域差は小さいとされています。</p>
       </div>
 
-      <div class="field">
-        <div><label for="shikikin">敷金</label></div>
-        <div class="input-wrap">
-          <input type="number" id="shikikin" value="1" min="0" step="0.5">
-          <span class="unit">ヶ月</span>
-        </div>
+      <div class="grand-total">
+        <div class="label">引っ越し初月にかかる総額（初期費用＋当月の生活費）</div>
+        <div class="value mono" id="out-grand-total">0</div>
+        <div class="breakdown mono" id="out-grand-breakdown">内訳：初期費用 ¥0 ＋ 月々の生活費 ¥0</div>
       </div>
 
-      <div class="field">
-        <div><label for="reikin">礼金</label></div>
-        <div class="input-wrap">
-          <input type="number" id="reikin" value="1" min="0" step="0.5">
-          <span class="unit">ヶ月</span>
-        </div>
-      </div>
-
-      <div class="field">
-        <div>
-          <label for="chukai">仲介手数料</label>
-          <span class="hint">税込で計算（家賃+管理費 × 月数 × 1.1）</span>
-        </div>
-        <div class="input-wrap">
-          <input type="number" id="chukai" value="1" min="0" step="0.5">
-          <span class="unit">ヶ月</span>
-        </div>
-      </div>
-
-      <div class="field">
-        <div><label for="maeyachin">前家賃</label></div>
-        <div class="input-wrap">
-          <input type="number" id="maeyachin" value="1" min="0" step="0.5">
-          <span class="unit">ヶ月</span>
-        </div>
-      </div>
-
-      <div class="field">
-        <div>
-          <label for="hosho">保証会社利用料</label>
-          <span class="hint">家賃に対する割合が目安</span>
-        </div>
-        <div class="input-wrap">
-          <input type="number" id="hosho" value="50" min="0" step="5">
-          <span class="unit">%</span>
-        </div>
-      </div>
-
-      <div class="field">
-        <div><label for="kasai">火災保険料</label></div>
-        <div class="input-wrap">
-          <input type="number" id="kasai" value="20000" min="0" step="1000">
-          <span class="unit">円</span>
-        </div>
-      </div>
-
-      <div class="field">
-        <div><label for="kagi">鍵交換費用</label></div>
-        <div class="input-wrap">
-          <input type="number" id="kagi" value="20000" min="0" step="1000">
-          <span class="unit">円</span>
-        </div>
-      </div>
-
-      <div class="field">
-        <div>
-          <label for="sonota">その他費用</label>
-          <span class="hint">消毒・害虫駆除・サポート費用など</span>
-        </div>
-        <div class="input-wrap">
-          <input type="number" id="sonota" value="0" min="0" step="1000">
-          <span class="unit">円</span>
-        </div>
-      </div>
-
-    </section>
-
-    <section class="receipt">
-      <h2>初期費用の明細</h2>
-
-      <div class="line-item"><span class="name">敷金</span><span class="leader"></span><span class="amount mono" id="out-shikikin">0</span></div>
-      <div class="line-item"><span class="name">礼金</span><span class="leader"></span><span class="amount mono" id="out-reikin">0</span></div>
-      <div class="line-item"><span class="name">仲介手数料（税込）</span><span class="leader"></span><span class="amount mono" id="out-chukai">0</span></div>
-      <div class="line-item"><span class="name">前家賃・前管理費</span><span class="leader"></span><span class="amount mono" id="out-maeyachin">0</span></div>
-      <div class="line-item"><span class="name">保証会社利用料</span><span class="leader"></span><span class="amount mono" id="out-hosho">0</span></div>
-      <div class="line-item"><span class="name">火災保険料</span><span class="leader"></span><span class="amount mono" id="out-kasai">0</span></div>
-      <div class="line-item"><span class="name">鍵交換費用</span><span class="leader"></span><span class="amount mono" id="out-kagi">0</span></div>
-      <div class="line-item"><span class="name">その他</span><span class="leader"></span><span class="amount mono" id="out-sonota">0</span></div>
-
-      <div class="total">
-        <span class="label">初期費用の合計</span>
-        <span class="value mono" id="out-total">0</span>
-      </div>
-
-      <div class="months-ref">
-        家賃の目安 <span class="mono" id="out-months">0.0</span> ヶ月分に相当します
-      </div>
-    </section>
-
+    </div>
   </div>
 
-  <div class="ad-slot"><span>広告スペース（ここに広告タグを設置）</span></div>
+  <div class="ad-slot">広告スペース（ここに広告タグを設置）</div>
 
   <p class="disclaimer">
-    このシミュレーターは一般的な相場に基づく概算です。実際の初期費用は物件・管理会社・保証会社によって異なります。正確な金額は不動産会社に直接ご確認ください。
+    このシミュレーターは各種公開データに基づく一般的な目安です。実際の金額は物件・地域・契約条件・引っ越し業者・購入する製品によって大きく異なります。正確な金額は不動産会社・引っ越し業者に直接お見積もりください。
   </p>
 
   <section class="article">
-    <h2>賃貸の初期費用とは？内訳をわかりやすく解説</h2>
-
+    <h2>新生活の費用は「入居時」だけでなく「その先」も見ておきたい</h2>
     <p>
-      賃貸物件を契約するときは、家賃だけでなく複数の費用をまとめて支払う必要があります。一般的には家賃の4〜6ヶ月分が初期費用の目安とされていますが、物件や地域、保証会社の条件によって金額は大きく変わります。
+      引っ越しの費用というと、敷金・礼金など契約時にかかるお金だけを想像しがちですが、実際には家具・家電の購入費、引っ越し業者への支払い、そして入居後すぐに発生する光熱費・食費まで含めて初めて「本当に必要な金額」が見えてきます。このシミュレーターでは、あなたの状況（新卒・転勤・同棲・ファミリー）と地域の条件を踏まえて、その全体像を計算します。
     </p>
 
-    <h3>敷金・礼金</h3>
+    <h3>ライフステージによって家具家電の費用は大きく変わる</h3>
     <p>
-      敷金は退去時の原状回復費用に充てられる預け金で、問題がなければ一部が返還されます。礼金は貸主へのお礼として支払う費用で、こちらは返還されません。近年は「敷金・礼金ゼロ」の物件も増えていますが、その分月々の家賃が高めに設定されているケースもあります。
+      実家や寮から出て初めて一人暮らしを始める新卒の場合、家具・家電を一式そろえる必要があり、費用相場は20万〜30万円程度とされています。一方、転勤や単身赴任の場合はすでに家具家電を持っていることが多く、買い足しだけで済むケースが多いのが特徴です。同棲・二人暮らしの場合は、二人分を新調するとまとまった金額になりますが、お互いが使っていたものを持ち寄ることで費用を大きく抑えられるという調査結果もあります。
     </p>
 
-    <h3>仲介手数料</h3>
+    <h3>引っ越し業者の費用は「距離」と「時期」で数倍変わる</h3>
     <p>
-      不動産会社に支払う成功報酬です。宅地建物取引業法により上限が家賃の1ヶ月分（+消費税）と定められており、多くの物件でこの上限額が請求されます。
+      引っ越し業者に支払う費用は、移動距離・荷物量・時期によって大きく変動します。同じ世帯人数でも、同市内程度の近距離と500km以上の長距離とでは費用が数倍に膨らむこともあり、さらに進学・転勤が集中する2〜4月の繁忙期は通常期に比べて2〜5割ほど高くなる傾向があります。時期をずらせるのであれば、それだけで数万円単位の節約になることもあります。
     </p>
 
-    <h3>前家賃・前管理費</h3>
+    <h3>光熱費は「地域の気候」で差が出るが、食費はそれほど差がない</h3>
     <p>
-      契約した月の翌月分の家賃と管理費を、入居前にまとめて支払うのが一般的です。月の途中で入居する場合は、日割り家賃が別途発生することもあります。
+      総務省統計局の家計調査を確認すると、都道府県間の消費支出の差がもっとも大きいのは住居費で、次いで教養娯楽費となっており、食費の地域差はむしろ小さい部類に入ります。一方で電気代は、寒冷地では暖房需要により全国平均より高くなりやすく、温暖な地域ではやや低めになる傾向があります。つまり「地域によって生活費が変わる」というイメージの多くは、実際には家賃と光熱費の差によるところが大きいということです。
     </p>
 
-    <h3>保証会社利用料</h3>
+    <h3>【新卒・一人暮らし】初期費用で見落としがちなのは「家具・家電」</h3>
     <p>
-      連帯保証人の代わりに家賃保証会社を利用する場合に発生する費用です。多くの物件で保証会社の利用が契約の条件になっており、初回契約時に家賃の30〜100％程度を目安に請求されるケースが一般的です。
+      新卒で一人暮らしを始める人が引っ越し費用でつまずきやすいのは、敷金・礼金ではなく、実は家具・家電の購入費です。契約時の費用は不動産会社が明細を出してくれるため見積もりやすい一方、家具・家電は「何をどこまで揃えるか」が人によってバラバラで、想定より膨らみがちだからです。
+    </p>
+    <p>
+      一人暮らし向けの家具・家電を新品で一式揃えると、費用相場はおよそ20万〜30万円とされています。内訳としては、冷蔵庫・洗濯機・電子レンジといった生活家電で13万〜20万円程度、ベッドやカーテンなどの家具で5万〜10万円程度が目安です。ここに引っ越し業者への支払いも加わるため、契約時の初期費用だけで予算を組むと、入居後に家具家電の費用が足りなくなるケースが少なくありません。
+    </p>
+    <p>
+      対策として有効なのが、家電量販店の「新生活応援セット」の活用です。冷蔵庫・洗濯機・電子レンジなどを個別に買うより、セットで購入したほうがトータルで安く抑えられる傾向があります。地域によっては家電に東日本用・西日本用の違いがあるため、引っ越し先に対応した製品かどうかも確認しておくと安心です。新卒の引っ越しでは、契約時の初期費用と家具家電の購入費を別会計で考えず、両方合わせた総額で予算を組むことが、入居後に慌てないための一番のポイントです。
     </p>
 
-    <h3>火災保険料・鍵交換費用</h3>
+    <h3>【転勤・単身赴任】家具家電より「引っ越し業者の費用」がカギになる</h3>
     <p>
-      火災保険への加入は多くの物件で契約条件になっています。また、防犯上の理由から入居前に鍵を交換する費用を求められることも一般的です。
+      転勤や単身赴任の場合、新卒とは事情が異なります。すでに家具・家電を持っていることが多いため、購入費用そのものは抑えられる一方、既存の荷物を運ぶための引っ越し業者の費用が、初期費用の中で大きな割合を占めるようになります。
     </p>
+    <p>
+      会社によっては、転勤に伴う引っ越し費用や社宅・住宅手当を一部負担してくれる制度があります。まずは自己負担がどこまで発生するのかを、人事や総務に確認しておくことが最初のステップです。会社負担の範囲によっては、このシミュレーターで計算した金額よりも実際の自己負担が大幅に少なくなることもあります。
+    </p>
+    <p>
+      また、転勤は入社・異動が集中する2〜4月の繁忙期と重なりやすく、この時期は引っ越し業者の費用が通常期より2〜5割ほど高くなる傾向があります。時期を選べる場合は、繁忙期を避けるだけでも数万円単位の差が出ることがあります。単身赴任で家具家電を新調しない場合でも、冷蔵庫・洗濯機など大型家電の運搬には特別な追加料金がかかることがあるため、見積もり時に運搬品目を明確に伝えておくことをおすすめします。
+    </p>
+
+    <h3>【同棲・二人暮らし】家具家電は「持ち寄り」でどこまで安くできるか</h3>
+    <p>
+      同棲や二人暮らしを始める場合、家具・家電の費用は「二人分を新調するか」「持ち寄るか」で大きく変わります。調査によれば、二人暮らしの家電購入費用は平均で27万円程度とされる一方、10万円以下に抑えられている世帯も一定数存在し、これはお互いが独身時代から使っていた家電を持ち寄っているケースが多いためと考えられます。
+    </p>
+    <p>
+      持ち寄りで費用を抑える場合に検討したいのが、「同じ用途の家電がダブったときにどちらを残すか」というルール決めです。冷蔵庫や洗濯機は容量が大きいほうを残し、電子レンジや炊飯器のような小型家電は新しいほうを残す、といった基準をあらかじめ話し合っておくと、引っ越し当日にもめずに済みます。
+    </p>
+    <p>
+      また、同棲・二人暮らしの賃貸契約では、収入合算や連帯保証人の扱いが単身契約と異なる場合があります。契約者名義をどちらにするか、保証会社の審査に二人分の収入を合算できるかどうかは、物件によって対応が分かれるため、契約前に不動産会社へ確認しておくと安心です。
+    </p>
+
+    <h3>【ファミリー】荷物量と繁忙期が費用を大きく左右する</h3>
+    <p>
+      子どもを含むファミリーの引っ越しでは、単身や二人暮らしに比べて荷物量が格段に多くなるため、引っ越し業者の費用が総額の中で大きな比重を占めます。特に、子どもの進学・入学のタイミングに合わせて2〜4月に引っ越す家庭が多く、この繁忙期は引っ越し業者の予約が取りづらくなるうえ、費用も通常期より高くなりやすい時期です。
+    </p>
+    <p>
+      可能であれば、繁忙期を避けて1月や5月以降に引っ越し時期をずらす、あるいは繁忙期に引っ越す場合はできるだけ早め（1〜2ヶ月前）に業者を予約することで、費用を抑えられる可能性があります。また、荷物量が多い分、複数の引っ越し業者から相見積もりを取ることで、数万円〜十数万円の差が出ることも珍しくありません。
+    </p>
+    <p>
+      家具・家電についても、子どもの成長に合わせて買い替えが必要になるタイミングかどうかを見極めることが大切です。学習机やベッドなど、子どもの年齢によっては引っ越しを機にまとめて購入したほうが結果的に効率的な場合もあります。初期費用と家具家電の購入費、そして繁忙期の引っ越し業者費用、この3つを合わせて予算を組んでおくことで、ファミリーの引っ越しでも想定外の出費を防ぎやすくなります。
+    </p>
+
+    <h3>データの出典について</h3>
+    <ul class="source-list">
+      <li>総務省統計局「家計調査（家計収支編）」単身世帯・二人以上の世帯</li>
+      <li>総務省統計局「小売物価統計調査」電気代の都道府県別データ</li>
+      <li>各種引っ越し業者・住宅関連サービスが公表する費用相場データ（2026年時点の公開情報を参照）</li>
+    </ul>
   </section>
 
   <footer>
-    <span>おひっこし計算帯｜賃貸の初期費用シミュレーター</span>
+    <span>おひっこし計算帯｜新生活の総費用シミュレーター</span>
     <span><a href="privacy-policy.html">プライバシーポリシー・免責事項</a>｜入力データはお使いの端末内でのみ計算され、送信されません</span>
   </footer>
 </div>
 
 <div class="sticky-total">
-  <span class="label">初期費用合計</span>
-  <span class="value mono" id="out-total-mobile">0</span>
+  <span class="label">初月の総費用</span>
+  <span class="value mono" id="out-grand-total-mobile">0</span>
 </div>
 
 <script>
   const $ = id => document.getElementById(id);
   const fmt = n => Math.round(n).toLocaleString('ja-JP');
 
+  // ---- プリセットデータ ----
+  const FURNITURE_DEFAULT = {
+    shinsotsu: 250000,
+    tenkin: 80000,
+    dousei: 250000,
+    family: 350000
+  };
+
+  // [profile][distance] -> 通常期の引っ越し業者費用の目安
+  const MOVING_BASE = {
+    shinsotsu: { near: 50000,  mid: 80000,  far: 200000 },
+    tenkin:    { near: 50000,  mid: 80000,  far: 200000 },
+    dousei:    { near: 65000,  mid: 125000, far: 250000 },
+    family:    { near: 100000, mid: 180000, far: 350000 }
+  };
+  const SEASON_MULTIPLIER = { normal: 1.0, peak: 1.3 };
+
+  // 月々の光熱費・食費の全国平均目安（円）
+  const UTILITY_BASE = { shinsotsu: 12800, tenkin: 12800, dousei: 19000, family: 23000 };
+  const FOOD_BASE     = { shinsotsu: 45000, tenkin: 45000, dousei: 75000, family: 95000 };
+  const CLIMATE_MULTIPLIER = { cold: 1.15, standard: 1.0, warm: 0.9 };
+
+  let currentProfile = 'shinsotsu';
+  let userEditedKagukaden = false;
+  let userEditedHikkoshi = false;
+
+  function applyProfileDefaults(){
+    if(!userEditedKagukaden){
+      $('kagukaden').value = FURNITURE_DEFAULT[currentProfile];
+    }
+    updateMovingDefault();
+  }
+
+  function updateMovingDefault(){
+    if(userEditedHikkoshi) return;
+    const distance = $('distance').value;
+    const season = $('season').value;
+    const base = MOVING_BASE[currentProfile][distance];
+    $('hikkoshi').value = Math.round(base * SEASON_MULTIPLIER[season]);
+  }
+
+  // プロフィールタイル選択
+  document.querySelectorAll('#profile-tiles .tile').forEach(tile => {
+    tile.addEventListener('click', () => {
+      document.querySelectorAll('#profile-tiles .tile').forEach(t => t.classList.remove('selected'));
+      tile.classList.add('selected');
+      tile.querySelector('input').checked = true;
+      currentProfile = tile.dataset.profile;
+      applyProfileDefaults();
+      calc();
+    });
+  });
+  document.querySelector('#profile-tiles .tile').classList.add('selected');
+
+  $('distance').addEventListener('change', () => { updateMovingDefault(); calc(); });
+  $('season').addEventListener('change', () => { updateMovingDefault(); calc(); });
+  $('climate').addEventListener('change', calc);
+
+  $('kagukaden').addEventListener('input', () => { userEditedKagukaden = true; calc(); });
+  $('hikkoshi').addEventListener('input', () => { userEditedHikkoshi = true; calc(); });
+
   function calc(){
-    const yachin   = parseFloat($('yachin').value)   || 0;
-    const kanrihi  = parseFloat($('kanrihi').value)  || 0;
-    const shikikinM= parseFloat($('shikikin').value) || 0;
-    const reikinM  = parseFloat($('reikin').value)   || 0;
-    const chukaiM  = parseFloat($('chukai').value)   || 0;
-    const maeM     = parseFloat($('maeyachin').value)|| 0;
-    const hoshoPct = parseFloat($('hosho').value)    || 0;
-    const kasai    = parseFloat($('kasai').value)    || 0;
-    const kagi     = parseFloat($('kagi').value)     || 0;
-    const sonota   = parseFloat($('sonota').value)   || 0;
+    const yachin    = parseFloat($('yachin').value)    || 0;
+    const kanrihi   = parseFloat($('kanrihi').value)   || 0;
+    const shikikinM = parseFloat($('shikikin').value)  || 0;
+    const reikinM   = parseFloat($('reikin').value)    || 0;
+    const chukaiM   = parseFloat($('chukai').value)    || 0;
+    const maeM      = parseFloat($('maeyachin').value) || 0;
+    const hoshoPct  = parseFloat($('hosho').value)     || 0;
+    const kasai     = parseFloat($('kasai').value)     || 0;
+    const kagi      = parseFloat($('kagi').value)      || 0;
+    const kagukaden = parseFloat($('kagukaden').value) || 0;
+    const hikkoshi  = parseFloat($('hikkoshi').value)  || 0;
+    const sonota    = parseFloat($('sonota').value)    || 0;
+    const climate   = $('climate').value;
 
     const base = yachin + kanrihi;
-
-    const shikikin  = yachin * shikikinM; // 敷金は家賃基準が一般的
+    const shikikin  = yachin * shikikinM;
     const reikin    = yachin * reikinM;
     const chukai    = base * chukaiM * 1.1;
     const maeyachin = base * maeM;
     const hosho     = yachin * (hoshoPct / 100);
 
-    const total = shikikin + reikin + chukai + maeyachin + hosho + kasai + kagi + sonota;
-    const months = yachin > 0 ? total / yachin : 0;
+    const totalInitial = shikikin + reikin + chukai + maeyachin + hosho + kasai + kagi + kagukaden + hikkoshi + sonota;
+
+    const monthlyRent = base;
+    const monthlyUtility = UTILITY_BASE[currentProfile] * CLIMATE_MULTIPLIER[climate];
+    const monthlyFood = FOOD_BASE[currentProfile];
+    const totalMonthly = monthlyRent + monthlyUtility + monthlyFood;
+
+    const grandTotal = totalInitial + totalMonthly;
 
     $('out-shikikin').textContent   = fmt(shikikin);
     $('out-reikin').textContent     = fmt(reikin);
@@ -495,16 +614,27 @@
     $('out-hosho').textContent      = fmt(hosho);
     $('out-kasai').textContent      = fmt(kasai);
     $('out-kagi').textContent       = fmt(kagi);
+    $('out-kagukaden').textContent  = fmt(kagukaden);
+    $('out-hikkoshi').textContent   = fmt(hikkoshi);
     $('out-sonota').textContent     = fmt(sonota);
-    $('out-total').textContent      = fmt(total);
-    $('out-total-mobile').textContent = fmt(total);
-    $('out-months').textContent     = months.toFixed(1);
+    $('out-total-initial').textContent = fmt(totalInitial);
+
+    $('out-monthly-rent').textContent    = fmt(monthlyRent);
+    $('out-monthly-utility').textContent = fmt(monthlyUtility);
+    $('out-monthly-food').textContent    = fmt(monthlyFood);
+    $('out-total-monthly').textContent   = fmt(totalMonthly);
+
+    $('out-grand-total').textContent = fmt(grandTotal);
+    $('out-grand-total-mobile').textContent = fmt(grandTotal);
+    $('out-grand-breakdown').textContent =
+      `内訳：初期費用 ¥${fmt(totalInitial)} ＋ 月々の生活費 ¥${fmt(totalMonthly)}`;
   }
 
-  document.querySelectorAll('input').forEach(el => {
+  document.querySelectorAll('.field input, #kagukaden, #hikkoshi, #sonota').forEach(el => {
     el.addEventListener('input', calc);
   });
 
+  applyProfileDefaults();
   calc();
 </script>
 
