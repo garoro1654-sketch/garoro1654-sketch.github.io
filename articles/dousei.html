@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>同棲・二人暮らしの引っ越し完全ガイド｜契約名義の決め方から家電の持ち寄りルールまで｜おひっこし計算帯</title>
+<meta name="description" content="同棲・二人暮らしを始める人向けに、契約名義の決め方、収入合算の実務、家電の持ち寄りルール、生活費の分担方法まで、実際に迷うポイントを具体的に解説します。">
+<link rel="canonical" href="https://garoro1654-sketch.github.io/articles/dousei.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="同棲・二人暮らしの引っ越し完全ガイド｜おひっこし計算帯">
+<meta property="og:description" content="契約名義の決め方から家電の持ち寄りルール、生活費の分担方法まで完全解説。">
+<meta property="og:url" content="https://garoro1654-sketch.github.io/articles/dousei.html">
+<meta property="og:site_name" content="おひっこし計算帯">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+<meta name="google-site-verification" content="q5HrNozMAgW_-tkq-ryqjWP2e7V27TXD897LgVPdLkw" />
+<style>
+:root{
+  --paper: #FBFAF7;
+  --card: #FFFFFF;
+  --ink: #1C1C1A;
+  --ink-soft: #57574F;
+  --ink-faint: #8C8C82;
+  --accent: #3A5F52;
+  --accent-deep: #2A4A3F;
+  --accent-soft: #EEF3F0;
+  --brass: #8B6B3D;
+  --line: #E2E2DE;
+  --line-soft: #EEEEEA;
+  --shadow-sm: 0 1px 2px rgba(28,28,26,0.04), 0 1px 1px rgba(28,28,26,0.03);
+  --shadow-md: 0 4px 14px rgba(28,28,26,0.06), 0 1px 3px rgba(28,28,26,0.05);
+  --shadow-lg: 0 12px 32px rgba(28,28,26,0.10), 0 2px 6px rgba(28,28,26,0.06);
+}
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.mono{
+  font-family: "SFMono-Regular", Consolas, "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
+}
+a{ color: var(--accent); }
+
+.page{ max-width: 1080px; margin: 0 auto; padding: 36px 20px 90px; }
+.page-narrow{ max-width: 780px; margin: 0 auto; padding: 36px 20px 90px; }
+
+/* ---- top bar ---- */
+.topbar{
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 18px 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.page-narrow ~ .topbar, .topbar.narrow{ max-width: 780px; }
+.topbar .brand{
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.topbar .brand .mark{
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+header.hero{
+  padding: 20px 0 32px;
+  margin-bottom: 8px;
+  position: relative;
+}
+header.hero::after{
+  content: "";
+  display: block;
+  width: 46px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--accent);
+  margin-top: 22px;
+}
+header.hero .breadcrumb{
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  margin: 0 0 16px;
+}
+header.hero .breadcrumb a{ color: var(--ink-faint); text-decoration: none; }
+header.hero .breadcrumb a:hover{ text-decoration: underline; }
+header.hero .eyebrow{
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  padding: 4px 11px;
+  border-radius: 20px;
+  margin: 0 0 14px;
+}
+header.hero h1{
+  font-size: clamp(25px, 3.8vw, 34px);
+  font-weight: 700;
+  margin: 0 0 12px;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+}
+header.hero p{ margin: 0; color: var(--ink-soft); font-size: 15.5px; max-width: 46em; }
+header.hero .meta{
+  margin-top: 16px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+header.hero .meta span::before{ content: "・"; margin-right: 6px; color: var(--line); }
+header.hero .meta span:first-child::before{ content: none; }
+
+section.block{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow-sm);
+}
+section.block h2{
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+section.block .sub{
+  font-size: 13px;
+  color: var(--ink-faint);
+  margin: 0 0 20px;
+}
+
+/* ---- profile / tile selectors ---- */
+.tiles{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.tiles.tiles-3{ grid-template-columns: repeat(3, 1fr); }
+.tiles.tiles-2{ grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 700px){
+  .tiles{ grid-template-columns: repeat(2, 1fr); }
+}
+.tile{
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px 14px;
+  cursor: pointer;
+  text-align: left;
+  background: var(--paper);
+  transition: border-color .15s, background .15s, box-shadow .15s, transform .15s;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.tile:hover{ box-shadow: var(--shadow-md); transform: translateY(-1px); border-color: var(--ink-faint); }
+.tile input{ position:absolute; opacity:0; pointer-events:none; }
+.tile .emoji{
+  font-size: 20px; display:flex; align-items:center; justify-content:center;
+  width: 34px; height: 34px; border-radius: 8px;
+  background: var(--accent-soft);
+  margin-bottom: 10px;
+}
+.tile .name{ font-size: 13.5px; font-weight: 700; display:block; margin-bottom: 3px; }
+.tile .desc{ font-size: 11.5px; color: var(--ink-faint); display:block; line-height: 1.5; }
+.tile.selected{ border-color: var(--accent); background: var(--accent-soft); box-shadow: var(--shadow-md); }
+.tile.selected .emoji{ background: var(--accent); }
+
+.row-select{
+  display:flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.row-select label{ font-size: 13px; color: var(--ink-soft); display:block; margin-bottom: 7px; font-weight: 600; }
+.row-select select{
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
+  font-size: 14px;
+  color: var(--ink);
+  min-width: 190px;
+}
+
+/* ---- form fields ---- */
+.field{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.field:last-child{ border-bottom: none; }
+.field label{ font-size: 14px; color: var(--ink); }
+.field .hint{ display:block; font-size: 11.5px; color: var(--ink-faint); margin-top: 3px; }
+.field .input-wrap{ display:flex; align-items: baseline; gap: 6px; flex-shrink: 0; }
+.field input{
+  width: 110px;
+  text-align: right;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--paper);
+}
+.field input:focus{ outline: none; border-color: var(--accent); background: #fff; box-shadow: 0 0 0 3px var(--accent-soft); }
+.field .unit{ font-size: 13px; color: var(--ink-soft); width: 2.4em; }
+
+.layout{
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+@media (max-width: 780px){ .layout{ grid-template-columns: 1fr; } }
+
+/* ---- receipt ---- */
+.receipt{ position: sticky; top: 24px; }
+.receipt-inner{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 24px 26px 22px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-sm);
+}
+.receipt-inner h3{
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.line-item{ display:flex; align-items: baseline; gap: 8px; padding: 6px 0; font-size: 13.5px; }
+.line-item .name{ color: var(--ink-soft); white-space: nowrap; }
+.leader{ flex: 1; border-bottom: 1px dotted var(--line); margin-bottom: 4px; }
+.line-item .amount{ white-space: nowrap; }
+.line-item .amount::before{ content: "¥"; font-size: 11px; color: var(--ink-faint); }
+.receipt-inner .total{
+  display:flex; justify-content: space-between; align-items: baseline;
+  margin-top: 14px; padding-top: 16px; border-top: 2px solid var(--ink);
+}
+.receipt-inner .total .label{ font-size: 13.5px; font-weight: 700; }
+.receipt-inner .total .value{ font-size: 23px; font-weight: 700; color: var(--brass); }
+.receipt-inner .total .value::before{ content: "¥"; font-size: 14px; margin-right: 2px; }
+
+.grand-total{
+  background: linear-gradient(160deg, var(--ink) 0%, #262622 100%);
+  color: var(--paper);
+  border-radius: 10px;
+  padding: 22px 26px;
+  box-shadow: var(--shadow-lg);
+}
+.grand-total .label{ font-size: 13px; opacity: .8; margin-bottom: 4px; }
+.grand-total .value{ font-size: 29px; font-weight: 700; }
+.grand-total .value::before{ content: "¥"; font-size: 17px; margin-right: 2px; opacity: .8; }
+.grand-total .breakdown{ font-size: 12px; opacity: .75; margin-top: 8px; }
+
+.disclaimer{
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  border-left: 3px solid var(--line);
+  padding: 12px 16px;
+  background: var(--accent-soft);
+  border-radius: 0 6px 6px 0;
+}
+
+/* ---- article ---- */
+.article{ margin-top: 8px; }
+.article h2{ font-size: 21px; font-weight: 700; margin: 40px 0 16px; padding-top: 4px; letter-spacing: -0.01em; }
+.article h2:first-child{ margin-top: 0; }
+.article h3{ font-size: 16.5px; font-weight: 700; color: var(--accent-deep); margin: 28px 0 12px; }
+.article p{ font-size: 15px; color: var(--ink-soft); margin: 0 0 15px; max-width: 42em; }
+.article ul, .article ol{ padding-left: 1.4em; max-width: 42em; }
+.article li{ font-size: 15px; color: var(--ink-soft); margin-bottom: 7px; }
+.article strong{ color: var(--ink); }
+.lead{
+  font-size: 16.5px;
+  color: var(--ink);
+  max-width: 42em;
+  border-left: 3px solid var(--accent);
+  padding: 6px 0 6px 18px;
+  margin: 0 0 30px;
+}
+
+.toc{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin: 0 0 34px;
+  box-shadow: var(--shadow-sm);
+}
+.toc .toc-title{ font-size: 12px; font-weight: 700; color: var(--accent-deep); margin-bottom: 10px; letter-spacing: .02em; }
+.toc ol{ margin: 0; padding-left: 1.3em; columns: 1; }
+.toc li{ font-size: 13.5px; margin-bottom: 6px; }
+.toc a{ color: var(--ink); text-decoration: none; }
+.toc a:hover{ color: var(--accent); text-decoration: underline; }
+
+table.datatable{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 22px;
+  font-size: 13.5px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+table.datatable caption{
+  text-align: left;
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+  caption-side: top;
+}
+table.datatable th, table.datatable td{
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+}
+table.datatable th{
+  background: var(--accent-soft);
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-deep);
+}
+table.datatable td.num{ text-align: right; font-family: "SFMono-Regular", Consolas, "Courier New", monospace; }
+
+.checklist{
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 6px 18px;
+  box-shadow: var(--shadow-sm);
+}
+.checklist li{
+  padding: 11px 0 11px 30px;
+  position: relative;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 14.5px;
+}
+.checklist li:last-child{ border-bottom: none; }
+.checklist li::before{
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 15px;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--accent);
+  border-radius: 4px;
+}
+
+.callout{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--brass);
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin: 0 0 22px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  box-shadow: var(--shadow-sm);
+}
+.callout .callout-title{
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 7px;
+}
+
+.faq-item{
+  border-bottom: 1px solid var(--line-soft);
+  padding: 16px 0;
+}
+.faq-item:last-child{ border-bottom: none; }
+.faq-item .q{ font-size: 14.5px; font-weight: 700; color: var(--ink); margin: 0 0 7px; }
+.faq-item .q::before{ content: "Q"; color: #fff; background: var(--accent); font-size: 11px; display: inline-flex; align-items:center; justify-content:center; width: 18px; height: 18px; border-radius: 5px; margin-right: 8px; }
+.faq-item .a{ font-size: 14.5px; color: var(--ink-soft); margin: 0 0 0 26px; }
+
+.source-list{ font-size: 12px; color: var(--ink-faint); margin-top: 22px; padding-left: 1.4em; }
+.source-list li{ font-size: 12px; color: var(--ink-faint); margin-bottom: 4px; }
+.fn{
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+  margin-left: 1px;
+}
+.fn:hover{ text-decoration: underline; }
+
+.related-tools{
+  background: linear-gradient(160deg, var(--ink) 0%, #262622 100%);
+  color: var(--paper);
+  border-radius: 12px;
+  padding: 26px 28px;
+  margin: 40px 0;
+  box-shadow: var(--shadow-lg);
+}
+.related-tools .label{ font-size: 12px; font-weight: 700; letter-spacing: .04em; opacity: .7; margin-bottom: 10px; }
+.related-tools .title{ font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.related-tools p{ color: rgba(255,255,255,.75); font-size: 13.5px; margin: 0 0 16px; max-width: 40em; }
+.related-tools .btn{
+  display: inline-block;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: transform .15s;
+}
+.related-tools .btn:hover{ transform: translateY(-1px); }
+
+.article-nav{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 36px 0 8px;
+}
+@media (max-width: 700px){
+  .article-nav{ grid-template-columns: repeat(2, 1fr); }
+}
+.article-nav a{
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 15px;
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 600;
+  background: var(--card);
+  transition: box-shadow .15s, border-color .15s, transform .15s;
+}
+.article-nav a:hover{ box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.article-nav a.current{ border-color: var(--accent); background: var(--accent-soft); }
+.article-nav a .cat{ display:block; font-size: 10.5px; color: var(--ink-faint); margin-bottom: 4px; font-weight: 700; letter-spacing: .03em; }
+
+.ad-slot{
+  text-align:center;
+  margin: 28px 0;
+  color: var(--ink-faint);
+  font-size: 11px;
+  letter-spacing: .05em;
+}
+
+footer{
+  margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line);
+  font-size: 12.5px; color: var(--ink-faint);
+  display:flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+
+.sticky-total{ display:none; }
+@media (max-width: 780px){
+  .receipt{ position: static; }
+  .sticky-total{
+    display:flex; position: fixed; left:0; right:0; bottom:0;
+    background: var(--card); border-top: 1px solid var(--line);
+    padding: 13px 18px; justify-content: space-between; align-items: baseline;
+    box-shadow: 0 -8px 20px rgba(28,28,26,0.08); z-index: 10;
+  }
+  .sticky-total .label{ font-size: 13px; color: var(--ink-soft); }
+  .sticky-total .value{ font-size: 20px; font-weight: 700; color: var(--brass); }
+  .sticky-total .value::before{ content:"¥"; font-size: 13px; margin-right: 2px; }
+  .page{ padding-bottom: 100px; }
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1057798834587731"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="topbar"><a class="brand" href="../index.html"><span class="mark">🏠</span>おひっこし計算帯</a></div>
+<div class="page-narrow">
+
+  <header class="hero">
+    <p class="breadcrumb"><a href="../index.html">トップ</a> ＞ 同棲・二人暮らしガイド</p>
+    <span class="eyebrow">完全ガイド</span>
+    <h1>同棲・二人暮らしの引っ越し完全ガイド</h1>
+    <p>お金の話を先に決めておくかどうかで、その後の同棲生活の快適さが大きく変わります。契約名義・家電の持ち寄り・生活費の分担、実際に迷うポイントを具体的に整理しました。</p>
+    <div class="meta"><span>読了目安：約9分</span><span>対象：同棲・二人暮らしを始める人</span></div>
+  </header>
+
+  <div class="ad-slot">広告</div>
+
+  <nav class="toc">
+    <div class="toc-title">目次</div>
+    <ol>
+      <li><a href="#meigi">契約名義をどちらにするか</a></li>
+      <li><a href="#gassan">収入合算・連帯契約の実務</a></li>
+      <li><a href="#kaden">家電の持ち寄りルールの決め方</a></li>
+      <li><a href="#waribiki">生活費の分担方法：3つのパターン</a></li>
+      <li><a href="#risk">もし解消することになったら</a></li>
+      <li><a href="#save">二人で初期費用を抑える方法</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+    </ol>
+  </nav>
+
+  <section class="article">
+
+    <p class="lead">同棲の準備で後回しにされがちなのが「お金のルール決め」です。感情的になりやすい話だからこそ、引っ越し前の落ち着いたタイミングで一度きちんと話し合っておくことが、後々のトラブルを防ぎます。</p>
+
+    <h2 id="meigi">1. 契約名義をどちらにするか</h2>
+    <p>賃貸契約の名義は、どちらか一方の単独名義にするのが一般的です（連名契約に対応している物件は限られます）。名義をどちらにするかで、以下の点が変わってきます。</p>
+    <ul class="checklist">
+      <li>契約者本人の信用情報として扱われる（将来、別の住宅ローン等を組む際の参考情報になり得る）</li>
+      <li>解約の意思決定権は基本的に契約者側にある</li>
+      <li>収入が高い方を契約者にすると審査が通りやすい傾向がある</li>
+    </ul>
+    <div class="callout">
+      <div class="callout-title">パートナーは「同居人」として申告が必要</div>
+      契約者以外の同居人がいることは、契約時に不動産会社へ申告するのが原則です。無申告で同居すると、契約違反として扱われるリスクがあるため、内見・申込の段階で「二人暮らしである」ことを明確に伝えましょう。
+    </div>
+
+    <h2 id="gassan">2. 収入合算・連帯契約の実務</h2>
+    <p>一人分の収入では希望の家賃帯に届かない場合、二人の収入を合算して審査を通す「収入合算」に対応している保証会社・物件もあります。対応可否は物件によって異なるため、不動産会社に早い段階で確認しておくとよいでしょう。収入合算を利用する場合、パートナーが「連帯保証人」や「連帯借主」として契約に関わることになるため、契約書に記載される役割と責任範囲を事前に確認しておくことが重要です。</p>
+
+    <h2 id="kaden">3. 家電の持ち寄りルールの決め方</h2>
+    <p>お互いが一人暮らし時代に使っていた家電が重複した場合、「どちらを残すか」でもめやすいポイントです。あらかじめ基準を決めておくと、当日の判断がスムーズになります。</p>
+    <table class="datatable">
+      <tr><th>家電</th><th>判断基準の例</th></tr>
+      <tr><td>冷蔵庫・洗濯機</td><td>容量が大きい方、または購入年式が新しい方を残す</td></tr>
+      <tr><td>電子レンジ・炊飯器</td><td>新しい方を残し、古い方は処分・売却する</td></tr>
+      <tr><td>テレビ</td><td>画面サイズが大きい方を残す（部屋の広さと要相談）</td></tr>
+      <tr><td>掃除機・調理家電</td><td>機能が重複しないものはあえて両方残すのも合理的</td></tr>
+    </table>
+    <p>処分する家電は、粗大ゴミとして自治体に依頼するか、リサイクルショップの買取・引き取りサービスを利用する方法があります。引っ越しの繁忙期は粗大ゴミの回収予約が混み合うことがあるため、早めに手続きしておくと安心です。</p>
+
+    <h2 id="waribiki">4. 生活費の分担方法：3つのパターン</h2>
+    <ul class="checklist">
+      <li><strong>完全折半型</strong>：家賃・光熱費・食費などをすべて2で割る。収入差が小さいカップルに向いています。</li>
+      <li><strong>収入比率型</strong>：収入の割合に応じて負担額を決める（例：収入が6:4なら生活費も6:4）。収入差が大きい場合に不公平感が出にくい方法です。</li>
+      <li><strong>項目別分担型</strong>：家賃はAさん、食費・日用品はBさんというように、項目ごとに担当を分ける。管理がシンプルになる一方、項目間の金額バランスに偏りが出やすい点に注意が必要です。</li>
+    </ul>
+    <p>どの方法が正解ということはなく、二人の収入状況や価値観に合わせて選ぶことが大切です。共有の家計簿アプリや、共通の生活費口座を一つ作っておくと、記録・精算の手間が減ります。</p>
+
+    <h2 id="risk">5. もし解消することになったら</h2>
+    <p>考えたくないことですが、契約前に知っておくと安心な情報です。契約者側が退去の意思決定権を持つため、同居人側は原則として契約に直接的な発言権を持ちません。敷金の精算は契約者の口座に振り込まれるのが一般的なため、初期費用を二人で折半していた場合は、退去時の精算方法についてもあらかじめ簡単なメモを残しておくとトラブルを避けやすくなります。</p>
+
+    <h2 id="save">6. 二人で初期費用を抑える方法</h2>
+    <ul class="checklist">
+      <li>フリーレント物件を探す（一人暮らしと同様、交渉の余地があることも）</li>
+      <li>家具家電は持ち寄りを最大限活用し、新規購入を最小限にする</li>
+      <li>繁忙期（2〜4月）を避けて契約時期を調整できないか検討する</li>
+      <li>引っ越し業者は、二人分の荷物をまとめて依頼することで割引が適用される場合がある</li>
+    </ul>
+
+    <div class="disclaimer">
+      本記事の内容は一般的な情報であり、契約条件・保証会社の審査基準は物件・会社によって異なります。個別の契約内容は不動産会社に直接ご確認ください。
+    </div>
+
+    <h2 id="faq">7. よくある質問</h2>
+    <div class="faq-item">
+      <p class="q">同棲は入籍前でも収入合算できますか？</p>
+      <p class="a">対応の可否は保証会社・物件によって異なります。婚姻関係の有無を問わず収入合算に対応している会社もあれば、対応していない場合もあるため、事前確認が必須です。</p>
+    </div>
+    <div class="faq-item">
+      <p class="q">住民票はどうすればいいですか？</p>
+      <p class="a">同一世帯として登録することも、世帯を分けて登録することも可能です。世帯の分け方によって、一部の行政手続きや控除の扱いが変わる場合があるため、迷う場合は市区町村の窓口に確認するとよいでしょう。</p>
+    </div>
+    <div class="faq-item">
+      <p class="q">家具家電はどちらの名義で購入すべきですか？</p>
+      <p class="a">高額な家電（冷蔵庫・洗濯機など）は、購入時のレシートを保管し、どちらが購入したか記録を残しておくと、将来的な精算の際に分かりやすくなります。</p>
+    </div>
+
+    <ol class="source-list">
+      <li>各種賃貸保証会社が公表する収入合算対応の一般的な傾向（公開情報を参照）</li>
+      <li>各種引っ越し業者・住宅関連サービスが公表する費用相場データ（2026年時点の公開情報を参照）</li>
+    </ol>
+  </section>
+
+  <div class="related-tools">
+    <div class="label">TOOL</div>
+    <div class="title">この記事の内容を、あなたの条件で試算する</div>
+    <p>家賃や地域を入力するだけで、初期費用と入居後の生活費の総額が自動で計算されます。</p>
+    <a class="btn" href="../index.html">シミュレーターを使う</a>
+  </div>
+
+  <nav class="article-nav">
+    <a href="shinsotsu.html"><span class="cat">GUIDE</span>新卒・一人暮らしガイド</a>
+    <a href="tenkin.html"><span class="cat">GUIDE</span>転勤・単身赴任ガイド</a>
+    <a href="family.html"><span class="cat">GUIDE</span>ファミリーガイド</a>
+    <a href="../index.html"><span class="cat">TOOL</span>シミュレーターに戻る</a>
+  </nav>
+
+  <div class="ad-slot">広告</div>
+
+  <footer>
+    <span>おひっこし計算帯｜新生活の総費用シミュレーター</span>
+    <span><a href="../privacy-policy.html">プライバシーポリシー・免責事項</a></span>
+  </footer>
+</div>
+</body>
+</html>
