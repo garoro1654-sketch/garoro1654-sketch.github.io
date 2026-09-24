@@ -5,244 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>新生活の総費用シミュレーター｜おひっこし計算帯</title>
 <meta name="description" content="新卒・転勤・同棲・ファミリーなど、あなたの状況に合わせて引っ越しの初期費用と、引っ越し後の月々の生活費（光熱費・食費）まで無料で計算できるシミュレーターです。">
-<link rel="canonical" href="https://example.com/shinseikatsu-simulator.html">
+<link rel="canonical" href="https://garoro1654-sketch.github.io/">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="新生活の総費用シミュレーター｜おひっこし計算帯">
 <meta property="og:description" content="新卒・転勤・同棲・ファミリーなど、あなたの状況に合わせて初期費用と月々の生活費までまとめて計算できます。">
-<meta property="og:url" content="https://example.com/shinseikatsu-simulator.html">
+<meta property="og:url" content="https://garoro1654-sketch.github.io/">
 <meta property="og:site_name" content="おひっこし計算帯">
 <meta name="twitter:card" content="summary">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
 <meta name="google-site-verification" content="q5HrNozMAgW_-tkq-ryqjWP2e7V27TXD897LgVPdLkw" />
+<link rel="stylesheet" href="assets/style.css">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1057798834587731"
      crossorigin="anonymous"></script>
-<style>
-  :root{
-    --paper: #FFFFFF;
-    --card: #FFFFFF;
-    --ink: #1C1C1A;
-    --ink-soft: #57574F;
-    --ink-faint: #8C8C82;
-    --accent: #3A5F52;
-    --accent-soft: #EEF3F0;
-    --brass: #8B6B3D;
-    --line: #E2E2DE;
-    --line-soft: #EEEEEA;
-  }
-  *{ box-sizing: border-box; }
-
-  body{
-    margin:0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  .mono{
-    font-family: "SFMono-Regular", Consolas, "Courier New", monospace;
-    font-variant-numeric: tabular-nums;
-  }
-  a{ color: var(--accent); }
-
-  .page{ max-width: 1040px; margin: 0 auto; padding: 32px 20px 80px; }
-
-  header.hero{
-    padding: 8px 0 28px;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 28px;
-  }
-  header.hero h1{
-    font-size: clamp(24px, 3.6vw, 32px);
-    font-weight: 700;
-    margin: 0 0 8px;
-    letter-spacing: -0.01em;
-  }
-  header.hero p{ margin: 0; color: var(--ink-soft); font-size: 15px; max-width: 46em; }
-
-  section.block{
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 26px;
-    margin-bottom: 24px;
-  }
-  section.block h2{
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--ink);
-    margin: 0 0 6px;
-  }
-  section.block .sub{
-    font-size: 13px;
-    color: var(--ink-faint);
-    margin: 0 0 18px;
-  }
-
-  /* ---- profile / tile selectors ---- */
-  .tiles{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-  }
-  .tiles.tiles-3{ grid-template-columns: repeat(3, 1fr); }
-  @media (max-width: 700px){
-    .tiles{ grid-template-columns: repeat(2, 1fr); }
-  }
-  .tile{
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 14px 12px;
-    cursor: pointer;
-    text-align: left;
-    background: var(--paper);
-    transition: border-color .12s, background .12s;
-  }
-  .tile input{ position:absolute; opacity:0; pointer-events:none; }
-  .tile .emoji{ font-size: 20px; display:block; margin-bottom: 6px; }
-  .tile .name{ font-size: 13.5px; font-weight: 700; display:block; margin-bottom: 2px; }
-  .tile .desc{ font-size: 11.5px; color: var(--ink-faint); display:block; line-height: 1.4; }
-  .tile.selected{ border-color: var(--accent); background: var(--accent-soft); }
-
-  .row-select{
-    display:flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-top: 4px;
-  }
-  .row-select label{ font-size: 13px; color: var(--ink-soft); display:block; margin-bottom: 6px; }
-  .row-select select{
-    padding: 8px 10px;
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    background: var(--paper);
-    font-size: 14px;
-    color: var(--ink);
-    min-width: 180px;
-  }
-
-  /* ---- form fields (reused style) ---- */
-  .field{
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 11px 0;
-    border-bottom: 1px solid var(--line-soft);
-  }
-  .field:last-child{ border-bottom: none; }
-  .field label{ font-size: 14px; color: var(--ink); }
-  .field .hint{ display:block; font-size: 11.5px; color: var(--ink-faint); margin-top: 2px; }
-  .field .input-wrap{ display:flex; align-items: baseline; gap: 6px; flex-shrink: 0; }
-  .field input{
-    width: 108px;
-    text-align: right;
-    padding: 7px 9px;
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    font-size: 15px;
-    color: var(--ink);
-    background: var(--paper);
-  }
-  .field input:focus{ outline: none; border-color: var(--accent); background: #fff; }
-  .field .unit{ font-size: 13px; color: var(--ink-soft); width: 2.4em; }
-
-  .layout{
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 28px;
-    align-items: start;
-  }
-  @media (max-width: 780px){ .layout{ grid-template-columns: 1fr; } }
-
-  /* ---- receipt ---- */
-  .receipt{ position: sticky; top: 24px; }
-  .receipt-inner{
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 22px 24px 20px;
-    margin-bottom: 18px;
-  }
-  .receipt-inner h3{
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--ink-soft);
-    margin: 0 0 14px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--line-soft);
-  }
-  .line-item{ display:flex; align-items: baseline; gap: 8px; padding: 6px 0; font-size: 13.5px; }
-  .line-item .name{ color: var(--ink-soft); white-space: nowrap; }
-  .leader{ flex: 1; border-bottom: 1px dotted var(--line); margin-bottom: 4px; }
-  .line-item .amount{ white-space: nowrap; }
-  .line-item .amount::before{ content: "¥"; font-size: 11px; color: var(--ink-faint); }
-  .receipt-inner .total{
-    display:flex; justify-content: space-between; align-items: baseline;
-    margin-top: 12px; padding-top: 14px; border-top: 2px solid var(--ink);
-  }
-  .receipt-inner .total .label{ font-size: 13.5px; font-weight: 700; }
-  .receipt-inner .total .value{ font-size: 22px; font-weight: 700; color: var(--brass); }
-  .receipt-inner .total .value::before{ content: "¥"; font-size: 14px; margin-right: 2px; }
-
-  .grand-total{
-    background: var(--ink);
-    color: var(--paper);
-    border-radius: 6px;
-    padding: 20px 24px;
-  }
-  .grand-total .label{ font-size: 13px; opacity: .8; margin-bottom: 4px; }
-  .grand-total .value{ font-size: 28px; font-weight: 700; }
-  .grand-total .value::before{ content: "¥"; font-size: 17px; margin-right: 2px; opacity: .8; }
-  .grand-total .breakdown{ font-size: 12px; opacity: .75; margin-top: 8px; }
-
-  .disclaimer{
-    margin-top: 10px;
-    font-size: 12.5px;
-    color: var(--ink-faint);
-    border-left: 3px solid var(--line);
-    padding: 10px 14px;
-    background: var(--accent-soft);
-  }
-
-  .article{ margin-top: 8px; max-width: 42em; }
-  .article h2{ font-size: 19px; font-weight: 700; margin: 0 0 16px; }
-  .article h3{ font-size: 15px; font-weight: 700; color: var(--accent); margin: 24px 0 8px; }
-  .article p, .article li{ font-size: 14.5px; color: var(--ink-soft); }
-  .article ul { padding-left: 1.3em; }
-  .source-list{ font-size: 12px; color: var(--ink-faint); margin-top: 20px; padding-left: 1.4em; }
-  .source-list li{ font-size: 12px; color: var(--ink-faint); margin-bottom: 4px; }
-  .fn{
-    font-size: 11px;
-    color: var(--accent);
-    text-decoration: none;
-    margin-left: 1px;
-  }
-  .fn:hover{ text-decoration: underline; }
-
-  footer{
-    margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line);
-    font-size: 12.5px; color: var(--ink-faint);
-    display:flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-  }
-
-  .sticky-total{ display:none; }
-  @media (max-width: 780px){
-    .receipt{ position: static; }
-    .sticky-total{
-      display:flex; position: fixed; left:0; right:0; bottom:0;
-      background: var(--card); border-top: 1px solid var(--line);
-      padding: 12px 18px; justify-content: space-between; align-items: baseline;
-      box-shadow: 0 -6px 16px rgba(34,48,31,0.06); z-index: 10;
-    }
-    .sticky-total .label{ font-size: 13px; color: var(--ink-soft); }
-    .sticky-total .value{ font-size: 20px; font-weight: 700; color: var(--brass); }
-    .sticky-total .value::before{ content:"¥"; font-size: 13px; margin-right: 2px; }
-    .page{ padding-bottom: 100px; }
-  }
-</style>
 </head>
 <body>
 
@@ -422,77 +198,32 @@
     このシミュレーターは各種公開データに基づく一般的な目安です。実際の金額は物件・地域・契約条件・引っ越し業者・購入する製品によって大きく異なります。正確な金額は不動産会社・引っ越し業者に直接お見積もりください。
   </p>
 
-  <section class="article">
-    <h2>新生活の費用は「入居時」だけでなく「その先」も見ておきたい</h2>
-    <p>
-      引っ越しの費用というと、敷金・礼金など契約時にかかるお金だけを想像しがちですが、実際には家具・家電の購入費、引っ越し業者への支払い、そして入居後すぐに発生する光熱費・食費まで含めて初めて「本当に必要な金額」が見えてきます。このシミュレーターでは、あなたの状況（新卒・転勤・同棲・ファミリー）と地域の条件を踏まえて、その全体像を計算します。
-    </p>
-
-    <h3>ライフステージによって家具家電の費用は大きく変わる</h3>
-    <p>
-      実家や寮から出て初めて一人暮らしを始める新卒の場合、家具・家電を一式そろえる必要があり、費用相場は20万〜30万円程度とされています。一方、転勤や単身赴任の場合はすでに家具家電を持っていることが多く、買い足しだけで済むケースが多いのが特徴です。同棲・二人暮らしの場合は、二人分を新調するとまとまった金額になりますが、お互いが使っていたものを持ち寄ることで費用を大きく抑えられるという調査結果もあります。
-    </p>
-
-    <h3>引っ越し業者の費用は「距離」と「時期」で数倍変わる</h3>
-    <p>
-      引っ越し業者に支払う費用は、移動距離・荷物量・時期によって大きく変動します。同じ世帯人数でも、同市内程度の近距離と500km以上の長距離とでは費用が数倍に膨らむこともあり、さらに進学・転勤が集中する2〜4月の繁忙期は通常期に比べて2〜5割ほど高くなる傾向があります。時期をずらせるのであれば、それだけで数万円単位の節約になることもあります。
-    </p>
-
-    <h3>光熱費は「地域の気候」で差が出るが、食費はそれほど差がない</h3>
-    <p>
-      総務省統計局の家計調査を確認すると<sup class="fn" id="fnref1"><a href="#fn1">1</a></sup>、都道府県間の消費支出の差がもっとも大きいのは住居費で、次いで教養娯楽費となっており、食費の地域差はむしろ小さい部類に入ります。一方で電気代は、寒冷地では暖房需要により全国平均より高くなりやすく、温暖な地域ではやや低めになる傾向があります<sup class="fn" id="fnref2"><a href="#fn2">2</a></sup>。つまり「地域によって生活費が変わる」というイメージの多くは、実際には家賃と光熱費の差によるところが大きいということです。
-    </p>
-
-    <h3>【新卒・一人暮らし】初期費用で見落としがちなのは「家具・家電」</h3>
-    <p>
-      新卒で一人暮らしを始める人が引っ越し費用でつまずきやすいのは、敷金・礼金ではなく、実は家具・家電の購入費です。契約時の費用は不動産会社が明細を出してくれるため見積もりやすい一方、家具・家電は「何をどこまで揃えるか」が人によってバラバラで、想定より膨らみがちだからです。
-    </p>
-    <p>
-      一人暮らし向けの家具・家電を新品で一式揃えると、費用相場はおよそ20万〜30万円とされています<sup class="fn" id="fnref3-1"><a href="#fn3">3</a></sup>。内訳としては、冷蔵庫・洗濯機・電子レンジといった生活家電で13万〜20万円程度、ベッドやカーテンなどの家具で5万〜10万円程度が目安です。ここに引っ越し業者への支払いも加わるため、契約時の初期費用だけで予算を組むと、入居後に家具家電の費用が足りなくなるケースが少なくありません。
-    </p>
-    <p>
-      対策として有効なのが、家電量販店の「新生活応援セット」の活用です。冷蔵庫・洗濯機・電子レンジなどを個別に買うより、セットで購入したほうがトータルで安く抑えられる傾向があります。地域によっては家電に東日本用・西日本用の違いがあるため、引っ越し先に対応した製品かどうかも確認しておくと安心です。新卒の引っ越しでは、契約時の初期費用と家具家電の購入費を別会計で考えず、両方合わせた総額で予算を組むことが、入居後に慌てないための一番のポイントです。
-    </p>
-
-    <h3>【転勤・単身赴任】家具家電より「引っ越し業者の費用」がカギになる</h3>
-    <p>
-      転勤や単身赴任の場合、新卒とは事情が異なります。すでに家具・家電を持っていることが多いため、購入費用そのものは抑えられる一方、既存の荷物を運ぶための引っ越し業者の費用が、初期費用の中で大きな割合を占めるようになります。
-    </p>
-    <p>
-      会社によっては、転勤に伴う引っ越し費用や社宅・住宅手当を一部負担してくれる制度があります。まずは自己負担がどこまで発生するのかを、人事や総務に確認しておくことが最初のステップです。会社負担の範囲によっては、このシミュレーターで計算した金額よりも実際の自己負担が大幅に少なくなることもあります。
-    </p>
-    <p>
-      また、転勤は入社・異動が集中する2〜4月の繁忙期と重なりやすく、この時期は引っ越し業者の費用が通常期より2〜5割ほど高くなる傾向があります。時期を選べる場合は、繁忙期を避けるだけでも数万円単位の差が出ることがあります。単身赴任で家具家電を新調しない場合でも、冷蔵庫・洗濯機など大型家電の運搬には特別な追加料金がかかることがあるため、見積もり時に運搬品目を明確に伝えておくことをおすすめします。
-    </p>
-
-    <h3>【同棲・二人暮らし】家具家電は「持ち寄り」でどこまで安くできるか</h3>
-    <p>
-      同棲や二人暮らしを始める場合、家具・家電の費用は「二人分を新調するか」「持ち寄るか」で大きく変わります。調査によれば、二人暮らしの家電購入費用は平均で27万円程度とされる一方<sup class="fn" id="fnref3-2"><a href="#fn3">3</a></sup>、10万円以下に抑えられている世帯も一定数存在し、これはお互いが独身時代から使っていた家電を持ち寄っているケースが多いためと考えられます。
-    </p>
-    <p>
-      持ち寄りで費用を抑える場合に検討したいのが、「同じ用途の家電がダブったときにどちらを残すか」というルール決めです。冷蔵庫や洗濯機は容量が大きいほうを残し、電子レンジや炊飯器のような小型家電は新しいほうを残す、といった基準をあらかじめ話し合っておくと、引っ越し当日にもめずに済みます。
-    </p>
-    <p>
-      また、同棲・二人暮らしの賃貸契約では、収入合算や連帯保証人の扱いが単身契約と異なる場合があります。契約者名義をどちらにするか、保証会社の審査に二人分の収入を合算できるかどうかは、物件によって対応が分かれるため、契約前に不動産会社へ確認しておくと安心です。
-    </p>
-
-    <h3>【ファミリー】荷物量と繁忙期が費用を大きく左右する</h3>
-    <p>
-      子どもを含むファミリーの引っ越しでは、単身や二人暮らしに比べて荷物量が格段に多くなるため、引っ越し業者の費用が総額の中で大きな比重を占めます。特に、子どもの進学・入学のタイミングに合わせて2〜4月に引っ越す家庭が多く、この繁忙期は引っ越し業者の予約が取りづらくなるうえ、費用も通常期より高くなりやすい時期です。
-    </p>
-    <p>
-      可能であれば、繁忙期を避けて1月や5月以降に引っ越し時期をずらす、あるいは繁忙期に引っ越す場合はできるだけ早め（1〜2ヶ月前）に業者を予約することで、費用を抑えられる可能性があります。また、荷物量が多い分、複数の引っ越し業者から相見積もりを取ることで、数万円〜十数万円の差が出ることも珍しくありません。
-    </p>
-    <p>
-      家具・家電についても、子どもの成長に合わせて買い替えが必要になるタイミングかどうかを見極めることが大切です。学習机やベッドなど、子どもの年齢によっては引っ越しを機にまとめて購入したほうが結果的に効率的な場合もあります。初期費用と家具家電の購入費、そして繁忙期の引っ越し業者費用、この3つを合わせて予算を組んでおくことで、ファミリーの引っ越しでも想定外の出費を防ぎやすくなります。
-    </p>
-
-    <h3>データの出典について</h3>
-    <ol class="source-list">
-      <li id="fn1">総務省統計局「家計調査（家計収支編）」単身世帯・二人以上の世帯</li>
-      <li id="fn2">総務省統計局「小売物価統計調査」電気代の都道府県別データ</li>
-      <li id="fn3">各種引っ越し業者・住宅関連サービスが公表する費用相場データ（2026年時点の公開情報を参照）</li>
-    </ol>
+  <!-- 記事への導線 -->
+  <section class="block" id="articles-guide">
+    <h2>あなたの状況別・引っ越し完全ガイド</h2>
+    <p class="sub">シミュレーターの数字だけでは分からない、タイミングや落とし穴まで詳しく解説しています</p>
+    <div class="tiles" style="grid-template-columns: repeat(2, 1fr);">
+      <a class="tile" href="articles/shinsotsu.html" style="text-decoration:none; color:inherit;">
+        <span class="emoji">🎓</span>
+        <span class="name">新卒・一人暮らしガイド</span>
+        <span class="desc">家具家電の揃え方、新生活応援セットの選び方、初期費用の落とし穴</span>
+      </a>
+      <a class="tile" href="articles/tenkin.html" style="text-decoration:none; color:inherit;">
+        <span class="emoji">💼</span>
+        <span class="name">転勤・単身赴任ガイド</span>
+        <span class="desc">会社の補助制度の確認方法、社宅と賃貸の比較、単身赴任特有の出費</span>
+      </a>
+      <a class="tile" href="articles/dousei.html" style="text-decoration:none; color:inherit;">
+        <span class="emoji">🏡</span>
+        <span class="name">同棲・二人暮らしガイド</span>
+        <span class="desc">契約名義の決め方、収入合算、家電の持ち寄りルールの決め方</span>
+      </a>
+      <a class="tile" href="articles/family.html" style="text-decoration:none; color:inherit;">
+        <span class="emoji">👨‍👩‍👧</span>
+        <span class="name">ファミリーの引っ越しガイド</span>
+        <span class="desc">繁忙期の業者予約タイミング、転校・転園手続き、子育て世帯への支援制度</span>
+      </a>
+    </div>
   </section>
 
   <footer>
