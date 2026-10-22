@@ -503,6 +503,24 @@ footer{
 .topbar .gnav{ margin-left:auto; display:flex; flex-wrap:wrap; gap:4px 16px; font-size:13px; }
 .topbar .gnav a{ color: var(--ink-soft); text-decoration:none; }
 .topbar .gnav a:hover{ color: var(--accent); text-decoration:underline; }
+
+/* ---- 説明文ブロック ---- */
+.about-tool{ background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 30px 28px; margin: 36px 0; box-shadow: var(--shadow-sm); }
+.about-tool h2{ font-size: 19px; margin: 0 0 18px; }
+.about-tool h3{ font-size: 15.5px; margin: 30px 0 10px; padding-top: 22px; border-top: 1px solid var(--line-soft); }
+.about-tool h3:first-of-type{ border-top: none; padding-top: 0; margin-top: 0; }
+.about-tool p, .about-tool li{ font-size: 14.5px; color: var(--ink-soft); margin: 0 0 11px; }
+.about-tool ul, .about-tool ol{ margin: 0 0 12px; padding-left: 1.4em; }
+.about-tool .formula{ background: var(--paper); border: 1px solid var(--line-soft); border-radius: 8px; padding: 12px 16px; font-size: 13.5px; color: var(--ink); line-height: 1.9; margin: 0 0 12px; }
+.about-tool .q{ font-weight: 700; color: var(--ink); margin: 18px 0 3px; }
+.about-tool .a{ margin: 0 0 6px; }
+.about-tool .updated{ font-size: 12.5px; color: var(--ink-faint); margin: 20px 0 0; }
+.about-tool .table-wrap{ overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 10px 0 16px; }
+.about-tool table{ border-collapse: collapse; width: 100%; min-width: 540px; font-size: 13px; }
+.about-tool th, .about-tool td{ border: 1px solid var(--line); padding: 8px 11px; text-align: left; vertical-align: top; line-height: 1.6; color: var(--ink-soft); }
+.about-tool th{ background: var(--accent-soft); color: var(--ink); font-weight: 600; }
+.about-tool td.num{ text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 600px){ .about-tool{ padding: 24px 18px; } }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1057798834587731"
      crossorigin="anonymous"></script>
@@ -595,7 +613,7 @@ footer{
           <div class="input-wrap"><input type="number" id="yachin" value="80000" min="0" step="1000"><span class="unit">円</span></div>
         </div>
         <div class="field">
-          <div><label for="kanrihi">管理費・共益費</label><span class="hint">前家賃・仲介手数料の計算に含みます</span></div>
+          <div><label for="kanrihi">管理費・共益費</label><span class="hint">前家賃の計算に含みます（仲介手数料には含みません）</span></div>
           <div class="input-wrap"><input type="number" id="kanrihi" value="5000" min="0" step="500"><span class="unit">円</span></div>
         </div>
         <div class="field">
@@ -607,7 +625,7 @@ footer{
           <div class="input-wrap"><input type="number" id="reikin" value="1" min="0" step="0.5"><span class="unit">ヶ月</span></div>
         </div>
         <div class="field">
-          <div><label for="chukai">仲介手数料</label><span class="hint">税込で計算</span></div>
+          <div><label for="chukai">仲介手数料</label><span class="hint">家賃を基準に税込で計算（管理費は含みません）</span></div>
           <div class="input-wrap"><input type="number" id="chukai" value="1" min="0" step="0.5"><span class="unit">ヶ月</span></div>
         </div>
         <div class="field">
@@ -686,6 +704,89 @@ footer{
   <p class="disclaimer">
     このシミュレーターは各種公開データに基づく一般的な目安です。実際の金額は物件・地域・契約条件・引っ越し業者・購入する製品によって大きく異なります。正確な金額は不動産会社・引っ越し業者に直接お見積もりください。
   </p>
+
+  <section class="about-tool" id="about-tool">
+    <h2>このシミュレーターについて</h2>
+
+    <h3>できること・できないこと</h3>
+    <p>新卒・転勤・同棲・ファミリーのうち近い状況を選び、賃貸の契約条件を入力すると、引っ越しの初期費用の明細と、入居後の月々の生活費（家賃・管理費、光熱費、食費）の目安、引っ越し初月にかかる総額の目安を計算します。</p>
+    <p>一方で、次のものは計算に含まれていません。実際の見積もりとは差が出ます。</p>
+    <ul>
+      <li>入居日による日割り家賃。当月の家賃は1か月分として計上しています。</li>
+      <li>退去時に返還される敷金。ここでは、入居時に支払う金額として計上しています。</li>
+      <li>現在お住まいの家の退去にかかる費用や、不用品の処分費用。</li>
+      <li>駐車場代、インターネット回線の工事費、通信費、日用品、交通費など、家賃・光熱費・食費以外の毎月の費用。</li>
+      <li>勤務先の引っ越し手当や、自治体の補助などの減額要素。</li>
+    </ul>
+    <p>これらのうち、初期費用に加えたいものは、「その他費用」の欄に金額を入力すると、合計に反映されます。</p>
+
+    <h3>使い方</h3>
+    <ol>
+      <li>「① あなたに近いのは？」で、ご自身の状況に近いものを選びます。家具・家電の購入費と、引っ越し業者費用の目安が自動で入ります。</li>
+      <li>「② 引っ越し先の地域・条件」で、気候区分、引っ越しの距離、時期を選びます。</li>
+      <li>「③ 賃貸の契約条件」に、物件の家賃と、不動産会社の見積書にある条件（敷金・礼金などの月数、金額）を入力します。</li>
+      <li>「④ 家具家電・引っ越し業者費用」は、自動で入った目安を、ご自身の見積もりや購入予定に合わせて直せます。</li>
+      <li>右側の明細で、初期費用、月々の生活費、初月の総額を確認します。入力を変えると、結果はすぐに更新されます。</li>
+    </ol>
+
+    <h3>計算のしくみ</h3>
+    <p>初期費用の各項目は、次のように計算しています。</p>
+    <p class="formula">敷金 ＝ 家賃 × 月数<br>礼金 ＝ 家賃 × 月数<br>仲介手数料（税込） ＝ 家賃 × 月数 × 1.1<br>前家賃 ＝ （家賃 ＋ 管理費・共益費） × 月数<br>保証会社利用料 ＝ 家賃 × 割合<br>火災保険料・鍵交換費用・家具家電・引っ越し業者・その他 ＝ 入力した金額</p>
+    <p>月々の生活費は、次のとおりです。</p>
+    <p class="formula">家賃・管理費 ＝ 家賃 ＋ 管理費・共益費<br>光熱費 ＝ 世帯の目安額 × 気候区分の係数<br>食費 ＝ 世帯の目安額</p>
+    <p class="formula">引っ越し初月の総額 ＝ 初期費用の合計 ＋ 月々の生活費の合計</p>
+    <p>仲介手数料は、管理費や共益費を含めず、家賃だけを基準にしています。保証会社の利用料は、会社やプランによって、管理費を含めた金額が基準になることもあります。契約書や見積書の条件で、数字を入れ直してください。</p>
+
+    <h3>自動で入る目安の数字</h3>
+    <p>家具・家電、引っ越し業者、光熱費、食費の目安は、次の表のとおりです。公的統計の値そのものではなく、総務省統計局の家計調査などの公表値や、引っ越し業者が公開している料金例を参考に、運営者が丸めて設定した金額です。光熱費の気候区分の係数と、繁忙期の係数も、運営者が設定した簡易な補正です。</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th></th><th>新卒・一人暮らし</th><th>転勤・単身赴任</th><th>同棲・二人暮らし</th><th>ファミリー</th></tr>
+      <tr><td>家具・家電の購入費</td><td class="num">250,000円</td><td class="num">80,000円</td><td class="num">250,000円</td><td class="num">350,000円</td></tr>
+      <tr><td>引っ越し業者（近距離・通常期）</td><td class="num">50,000円</td><td class="num">50,000円</td><td class="num">65,000円</td><td class="num">100,000円</td></tr>
+      <tr><td>引っ越し業者（中距離・通常期）</td><td class="num">80,000円</td><td class="num">80,000円</td><td class="num">125,000円</td><td class="num">180,000円</td></tr>
+      <tr><td>引っ越し業者（長距離・通常期）</td><td class="num">200,000円</td><td class="num">200,000円</td><td class="num">250,000円</td><td class="num">350,000円</td></tr>
+      <tr><td>光熱費（月額・標準の気候）</td><td class="num">12,800円</td><td class="num">12,800円</td><td class="num">19,000円</td><td class="num">23,000円</td></tr>
+      <tr><td>食費（月額）</td><td class="num">45,000円</td><td class="num">45,000円</td><td class="num">75,000円</td><td class="num">95,000円</td></tr>
+    </table>
+    </div>
+    <ul>
+      <li>引っ越し時期が繁忙期（2月〜4月）の場合は、引っ越し業者費用を1.3倍にします。</li>
+      <li>光熱費は、気候区分が寒冷地（北海道・東北）なら1.15倍、温暖地（九州・沖縄）なら0.9倍にします。食費の地域差は小さいとされているため、補正していません。</li>
+    </ul>
+
+    <h3>賃貸の初期費用の項目</h3>
+    <p>項目の意味を、簡単に整理します。契約や慣習によって異なるため、実際の取り扱いは、不動産会社の説明と契約書で確認してください。</p>
+    <ul>
+      <li><strong>敷金</strong>：家賃の滞納や、退去時の原状回復の費用にあてるために、貸主に預けるお金です。退去時に、これらを差し引いた残りが返還されるのが一般的です。</li>
+      <li><strong>礼金</strong>：貸主へのお礼として支払うお金で、返還されません。</li>
+      <li><strong>仲介手数料</strong>：部屋を紹介した不動産会社に支払う手数料です。宅地建物取引業法にもとづく告示で、貸主と借主の双方から受け取れる合計は、家賃1か月分に消費税を加えた額が上限です。居住用の賃貸では、依頼者の一方から受け取れるのは原則として家賃0.5か月分に消費税を加えた額で、承諾を得ている場合は、1か月分に消費税を加えた額まで受け取れます。実際には、借主が1か月分を負担する例が多く、このシミュレーターの初期値も1か月分にしています。</li>
+      <li><strong>前家賃</strong>：入居する月の翌月分などの家賃を、あらかじめ支払うお金です。</li>
+      <li><strong>保証会社利用料</strong>：連帯保証人の代わりに、保証会社を利用するための費用です。初回に家賃の半額程度を求められる例がありますが、会社やプランで異なります。</li>
+      <li><strong>火災保険料</strong>：借りた部屋の火災などに備える保険の料金で、賃貸契約で加入を求められることが多い費用です。</li>
+      <li><strong>鍵交換費用</strong>：入居前に、鍵を交換する費用です。借主が負担する契約になっていることがあります。</li>
+    </ul>
+
+    <h3>よくある質問</h3>
+    <p class="q">仲介手数料が1か月分で計算されていますが、0.5か月分にならないのですか？</p>
+    <p class="a">上の項目の説明のとおり、法律上の原則は、借主の負担が0.5か月分に消費税を加えた額です。承諾がある場合は1か月分になります。契約前に、不動産会社の見積書で、金額と、その根拠を確認してください。0.5か月分で試算したいときは、「仲介手数料」の欄を0.5に変えてください。</p>
+    <p class="q">家具・家電を、持ち寄りや中古で用意する場合は？</p>
+    <p class="a">「家具・家電の購入費用」の欄を、自由に書き換えられます。書き換えたあとは、状況の選択を変えても、その金額が保持されます。</p>
+    <p class="q">光熱費や食費が、実際と違います。</p>
+    <p class="a">光熱費と食費は、世帯の全国平均を参考にした目安です。住まいの設備、使い方、自炊の頻度などで、大きく変わります。参考として、ご自身の過去の家計と見比べてお使いください。</p>
+    <p class="q">この合計は、いつ必要になるお金ですか？</p>
+    <p class="a">初期費用の多くは、契約から入居までのあいだに支払います。引っ越し業者費用や家具・家電の購入費用は、入居の前後に支払う場合があります。支払いの時期は、見積書で確認してください。</p>
+    <p class="q">入力した内容は、保存されますか？</p>
+    <p class="a">保存されません。計算はお使いのブラウザの中だけで行われ、入力内容が外部に送信されることはありません。ページを閉じると、入力内容は消えます。</p>
+
+    <h3>出典・参考</h3>
+    <ul>
+      <li><a href="https://www.stat.go.jp/data/kakei/" target="_blank" rel="noopener">総務省統計局 家計調査</a></li>
+      <li><a href="https://www.stat.go.jp/data/kouri/" target="_blank" rel="noopener">総務省統計局 小売物価統計調査</a></li>
+      <li><a href="https://www.mlit.go.jp/common/000005996.pdf" target="_blank" rel="noopener">国土交通省告示「宅地建物取引業者が宅地又は建物の売買等に関して受けることができる報酬の額」（昭和45年建設省告示第1552号。リンク先のPDFは平成16年の改正時点のもの）</a></li>
+    </ul>
+    <p class="updated">このページの最終更新日：2026年10月22日。数字はあくまで目安です。実際の金額は、不動産会社・引っ越し業者・購入先にお確かめください。</p>
+  </section>
 
   <!-- 記事への導線 -->
   <section class="block" id="articles-guide">
@@ -809,7 +910,7 @@ footer{
     const base = yachin + kanrihi;
     const shikikin  = yachin * shikikinM;
     const reikin    = yachin * reikinM;
-    const chukai    = base * chukaiM * 1.1;
+    const chukai    = yachin * chukaiM * 1.1;
     const maeyachin = base * maeM;
     const hosho     = yachin * (hoshoPct / 100);
 
