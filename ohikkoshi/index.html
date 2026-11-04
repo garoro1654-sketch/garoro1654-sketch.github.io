@@ -752,7 +752,7 @@ footer{
     </div>
     <ul>
       <li>引っ越し時期が繁忙期（2月〜4月）の場合は、引っ越し業者費用を1.3倍にします。</li>
-      <li>光熱費は、気候区分が寒冷地（北海道・東北）なら1.15倍、温暖地（九州・沖縄）なら0.9倍にします。食費の地域差は小さいとされているため、補正していません。</li>
+      <li>光熱費は、気候区分が寒冷地（北海道・東北）なら1.2倍、温暖地（九州・沖縄）なら0.9倍にします。係数は、総務省「家計調査」の都市別データの集計（寒冷地は標準の約1.21倍、温暖地は約0.87倍。<a href="articles/kounetsuhi-chiikisa.html">集計の記事</a>）を参考に、丸めたものです。食費の地域差は小さいとされているため、補正していません。</li>
     </ul>
 
     <h3>賃貸の初期費用の項目</h3>
@@ -852,7 +852,7 @@ footer{
   // 月々の光熱費・食費の全国平均目安（円）
   const UTILITY_BASE = { shinsotsu: 12800, tenkin: 12800, dousei: 19000, family: 23000 };
   const FOOD_BASE     = { shinsotsu: 45000, tenkin: 45000, dousei: 75000, family: 95000 };
-  const CLIMATE_MULTIPLIER = { cold: 1.15, standard: 1.0, warm: 0.9 };
+  const CLIMATE_MULTIPLIER = { cold: 1.2, standard: 1.0, warm: 0.9 };
 
   let currentProfile = 'shinsotsu';
   let userEditedKagukaden = false;
