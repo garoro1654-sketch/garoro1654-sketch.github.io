@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>引っ越し先の光熱費は地域でどれくらい違う？全国52都市の家計調査データで比較｜おひっこし計算帯</title>
+<meta name="description" content="引っ越し先の光熱費の目安を、総務省「家計調査」の都市別データ（2023〜2025年平均）から整理。寒冷地・標準・温暖地の月額の違い、同じ区分でも差が出る都市、ガスの種類による支出の出方を、52都市の数字で確認します。">
+<link rel="canonical" href="https://kurashi-sapo.com/ohikkoshi/articles/kounetsuhi-chiikisa.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="引っ越し先の光熱費は地域でどれくらい違う？｜おひっこし計算帯">
+<meta property="og:description" content="寒冷地・標準・温暖地の光熱費の違いを、総務省「家計調査」の52都市のデータで比較します。">
+<meta property="og:url" content="https://kurashi-sapo.com/ohikkoshi/articles/kounetsuhi-chiikisa.html">
+<meta property="og:site_name" content="おひっこし計算帯">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+<meta name="google-site-verification" content="q5HrNozMAgW_-tkq-ryqjWP2e7V27TXD897LgVPdLkw" />
+<style>
+:root{
+  --paper: #FBFAF7;
+  --card: #FFFFFF;
+  --ink: #1C1C1A;
+  --ink-soft: #57574F;
+  --ink-faint: #8C8C82;
+  --accent: #3A5F52;
+  --accent-deep: #2A4A3F;
+  --accent-soft: #EEF3F0;
+  --brass: #8B6B3D;
+  --line: #E2E2DE;
+  --line-soft: #EEEEEA;
+  --shadow-sm: 0 1px 2px rgba(28,28,26,0.04), 0 1px 1px rgba(28,28,26,0.03);
+  --shadow-md: 0 4px 14px rgba(28,28,26,0.06), 0 1px 3px rgba(28,28,26,0.05);
+  --shadow-lg: 0 12px 32px rgba(28,28,26,0.10), 0 2px 6px rgba(28,28,26,0.06);
+}
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.mono{
+  font-family: "SFMono-Regular", Consolas, "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
+}
+a{ color: var(--accent); }
+
+.page{ max-width: 1080px; margin: 0 auto; padding: 36px 20px 90px; }
+.page-narrow{ max-width: 780px; margin: 0 auto; padding: 36px 20px 90px; }
+
+/* ---- top bar ---- */
+.topbar{
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 18px 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.page-narrow ~ .topbar, .topbar.narrow{ max-width: 780px; }
+.topbar .brand{
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.topbar .brand .mark{
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+header.hero{
+  padding: 20px 0 32px;
+  margin-bottom: 8px;
+  position: relative;
+}
+header.hero::after{
+  content: "";
+  display: block;
+  width: 46px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--accent);
+  margin-top: 22px;
+}
+header.hero .breadcrumb{
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  margin: 0 0 16px;
+}
+header.hero .breadcrumb a{ color: var(--ink-faint); text-decoration: none; }
+header.hero .breadcrumb a:hover{ text-decoration: underline; }
+header.hero .eyebrow{
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  padding: 4px 11px;
+  border-radius: 20px;
+  margin: 0 0 14px;
+}
+header.hero h1{
+  font-size: clamp(25px, 3.8vw, 34px);
+  font-weight: 700;
+  margin: 0 0 12px;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+}
+header.hero p{ margin: 0; color: var(--ink-soft); font-size: 15.5px; max-width: 46em; }
+header.hero .meta{
+  margin-top: 16px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+header.hero .meta span::before{ content: "・"; margin-right: 6px; color: var(--line); }
+header.hero .meta span:first-child::before{ content: none; }
+
+section.block{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow-sm);
+}
+section.block h2{
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+section.block .sub{
+  font-size: 13px;
+  color: var(--ink-faint);
+  margin: 0 0 20px;
+}
+
+/* ---- profile / tile selectors ---- */
+.tiles{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.tiles.tiles-3{ grid-template-columns: repeat(3, 1fr); }
+.tiles.tiles-2{ grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 700px){
+  .tiles{ grid-template-columns: repeat(2, 1fr); }
+}
+.tile{
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px 14px;
+  cursor: pointer;
+  text-align: left;
+  background: var(--paper);
+  transition: border-color .15s, background .15s, box-shadow .15s, transform .15s;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.tile:hover{ box-shadow: var(--shadow-md); transform: translateY(-1px); border-color: var(--ink-faint); }
+.tile input{ position:absolute; opacity:0; pointer-events:none; }
+.tile .emoji{
+  font-size: 20px; display:flex; align-items:center; justify-content:center;
+  width: 34px; height: 34px; border-radius: 8px;
+  background: var(--accent-soft);
+  margin-bottom: 10px;
+}
+.tile .name{ font-size: 13.5px; font-weight: 700; display:block; margin-bottom: 3px; }
+.tile .desc{ font-size: 11.5px; color: var(--ink-faint); display:block; line-height: 1.5; }
+.tile.selected{ border-color: var(--accent); background: var(--accent-soft); box-shadow: var(--shadow-md); }
+.tile.selected .emoji{ background: var(--accent); }
+
+.row-select{
+  display:flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.row-select label{ font-size: 13px; color: var(--ink-soft); display:block; margin-bottom: 7px; font-weight: 600; }
+.row-select select{
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
+  font-size: 14px;
+  color: var(--ink);
+  min-width: 190px;
+}
+
+/* ---- form fields ---- */
+.field{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.field:last-child{ border-bottom: none; }
+.field label{ font-size: 14px; color: var(--ink); }
+.field .hint{ display:block; font-size: 11.5px; color: var(--ink-faint); margin-top: 3px; }
+.field .input-wrap{ display:flex; align-items: baseline; gap: 6px; flex-shrink: 0; }
+.field input{
+  width: 110px;
+  text-align: right;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--paper);
+}
+.field input:focus{ outline: none; border-color: var(--accent); background: #fff; box-shadow: 0 0 0 3px var(--accent-soft); }
+.field .unit{ font-size: 13px; color: var(--ink-soft); width: 2.4em; }
+
+.layout{
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+@media (max-width: 780px){ .layout{ grid-template-columns: 1fr; } }
+
+/* ---- receipt ---- */
+.receipt{ position: sticky; top: 24px; }
+.receipt-inner{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 24px 26px 22px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-sm);
+}
+.receipt-inner h3{
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.line-item{ display:flex; align-items: baseline; gap: 8px; padding: 6px 0; font-size: 13.5px; }
+.line-item .name{ color: var(--ink-soft); white-space: nowrap; }
+.leader{ flex: 1; border-bottom: 1px dotted var(--line); margin-bottom: 4px; }
+.line-item .amount{ white-space: nowrap; }
+.line-item .amount::before{ content: "¥"; font-size: 11px; color: var(--ink-faint); }
+.receipt-inner .total{
+  display:flex; justify-content: space-between; align-items: baseline;
+  margin-top: 14px; padding-top: 16px; border-top: 2px solid var(--ink);
+}
+.receipt-inner .total .label{ font-size: 13.5px; font-weight: 700; }
+.receipt-inner .total .value{ font-size: 23px; font-weight: 700; color: var(--brass); }
+.receipt-inner .total .value::before{ content: "¥"; font-size: 14px; margin-right: 2px; }
+
+.grand-total{
+  background: linear-gradient(160deg, var(--ink) 0%, #262622 100%);
+  color: var(--paper);
+  border-radius: 10px;
+  padding: 22px 26px;
+  box-shadow: var(--shadow-lg);
+}
+.grand-total .label{ font-size: 13px; opacity: .8; margin-bottom: 4px; }
+.grand-total .value{ font-size: 29px; font-weight: 700; }
+.grand-total .value::before{ content: "¥"; font-size: 17px; margin-right: 2px; opacity: .8; }
+.grand-total .breakdown{ font-size: 12px; opacity: .75; margin-top: 8px; }
+
+.disclaimer{
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  border-left: 3px solid var(--line);
+  padding: 12px 16px;
+  background: var(--accent-soft);
+  border-radius: 0 6px 6px 0;
+}
+
+/* ---- article ---- */
+.article{ margin-top: 8px; }
+.article h2{ font-size: 21px; font-weight: 700; margin: 40px 0 16px; padding-top: 4px; letter-spacing: -0.01em; }
+.article h2:first-child{ margin-top: 0; }
+.article h3{ font-size: 16.5px; font-weight: 700; color: var(--accent-deep); margin: 28px 0 12px; }
+.article p{ font-size: 15px; color: var(--ink-soft); margin: 0 0 15px; max-width: 42em; }
+.article ul, .article ol{ padding-left: 1.4em; max-width: 42em; }
+.article li{ font-size: 15px; color: var(--ink-soft); margin-bottom: 7px; }
+.article strong{ color: var(--ink); }
+.lead{
+  font-size: 16.5px;
+  color: var(--ink);
+  max-width: 42em;
+  border-left: 3px solid var(--accent);
+  padding: 6px 0 6px 18px;
+  margin: 0 0 30px;
+}
+
+.toc{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin: 0 0 34px;
+  box-shadow: var(--shadow-sm);
+}
+.toc .toc-title{ font-size: 12px; font-weight: 700; color: var(--accent-deep); margin-bottom: 10px; letter-spacing: .02em; }
+.toc ol{ margin: 0; padding-left: 1.3em; columns: 1; }
+.toc li{ font-size: 13.5px; margin-bottom: 6px; }
+.toc a{ color: var(--ink); text-decoration: none; }
+.toc a:hover{ color: var(--accent); text-decoration: underline; }
+
+table.datatable{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 22px;
+  font-size: 13.5px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+table.datatable caption{
+  text-align: left;
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+  caption-side: top;
+}
+table.datatable th, table.datatable td{
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+}
+table.datatable th{
+  background: var(--accent-soft);
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--accent-deep);
+}
+table.datatable td.num{ text-align: right; font-family: "SFMono-Regular", Consolas, "Courier New", monospace; }
+
+.checklist{
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 6px 18px;
+  box-shadow: var(--shadow-sm);
+}
+.checklist li{
+  padding: 11px 0 11px 30px;
+  position: relative;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 14.5px;
+}
+.checklist li:last-child{ border-bottom: none; }
+.checklist li::before{
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 15px;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--accent);
+  border-radius: 4px;
+}
+
+.callout{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--brass);
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin: 0 0 22px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  box-shadow: var(--shadow-sm);
+}
+.callout .callout-title{
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 7px;
+}
+
+.faq-item{
+  border-bottom: 1px solid var(--line-soft);
+  padding: 16px 0;
+}
+.faq-item:last-child{ border-bottom: none; }
+.faq-item .q{ font-size: 14.5px; font-weight: 700; color: var(--ink); margin: 0 0 7px; }
+.faq-item .q::before{ content: "Q"; color: #fff; background: var(--accent); font-size: 11px; display: inline-flex; align-items:center; justify-content:center; width: 18px; height: 18px; border-radius: 5px; margin-right: 8px; }
+.faq-item .a{ font-size: 14.5px; color: var(--ink-soft); margin: 0 0 0 26px; }
+
+.source-list{ font-size: 12px; color: var(--ink-faint); margin-top: 22px; padding-left: 1.4em; }
+.source-list li{ font-size: 12px; color: var(--ink-faint); margin-bottom: 4px; }
+.fn{
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+  margin-left: 1px;
+}
+.fn:hover{ text-decoration: underline; }
+
+.related-tools{
+  background: linear-gradient(160deg, var(--ink) 0%, #262622 100%);
+  color: var(--paper);
+  border-radius: 12px;
+  padding: 26px 28px;
+  margin: 40px 0;
+  box-shadow: var(--shadow-lg);
+}
+.related-tools .label{ font-size: 12px; font-weight: 700; letter-spacing: .04em; opacity: .7; margin-bottom: 10px; }
+.related-tools .title{ font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.related-tools p{ color: rgba(255,255,255,.75); font-size: 13.5px; margin: 0 0 16px; max-width: 40em; }
+.related-tools .btn{
+  display: inline-block;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: transform .15s;
+}
+.related-tools .btn:hover{ transform: translateY(-1px); }
+
+.article-nav{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 36px 0 8px;
+}
+@media (max-width: 700px){
+  .article-nav{ grid-template-columns: repeat(2, 1fr); }
+}
+.article-nav a{
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 15px;
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 600;
+  background: var(--card);
+  transition: box-shadow .15s, border-color .15s, transform .15s;
+}
+.article-nav a:hover{ box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.article-nav a.current{ border-color: var(--accent); background: var(--accent-soft); }
+.article-nav a .cat{ display:block; font-size: 10.5px; color: var(--ink-faint); margin-bottom: 4px; font-weight: 700; letter-spacing: .03em; }
+
+.ad-slot{
+  text-align:center;
+  margin: 28px 0;
+  color: var(--ink-faint);
+  font-size: 11px;
+  letter-spacing: .05em;
+}
+
+footer{
+  margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line);
+  font-size: 12.5px; color: var(--ink-faint);
+  display:flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+
+.sticky-total{ display:none; }
+@media (max-width: 780px){
+  .receipt{ position: static; }
+  .sticky-total{
+    display:flex; position: fixed; left:0; right:0; bottom:0;
+    background: var(--card); border-top: 1px solid var(--line);
+    padding: 13px 18px; justify-content: space-between; align-items: baseline;
+    box-shadow: 0 -8px 20px rgba(28,28,26,0.08); z-index: 10;
+  }
+  .sticky-total .label{ font-size: 13px; color: var(--ink-soft); }
+  .sticky-total .value{ font-size: 20px; font-weight: 700; color: var(--brass); }
+  .sticky-total .value::before{ content:"¥"; font-size: 13px; margin-right: 2px; }
+  .page{ padding-bottom: 100px; }
+}
+
+
+.topbar .gnav{ margin-left:auto; display:flex; flex-wrap:wrap; gap:4px 16px; font-size:13px; }
+.topbar .gnav a{ color: var(--ink-soft); text-decoration:none; }
+.topbar .gnav a:hover{ color: var(--accent); text-decoration:underline; }
+
+.tscroll{overflow-x:auto;margin:0 0 22px;}
+.tscroll table.datatable{margin:0;min-width:480px;}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1057798834587731"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="topbar"><a class="brand" href="/ohikkoshi/"><span class="mark">🏠</span>おひっこし計算帯</a><nav class="gnav"><a href="/">暮らしサポ トップ</a><a href="/ohikkoshi/">新生活の費用</a><a href="/ideco-nisa-simulator/">iDeCo・NISA</a><a href="/about.html">運営者情報</a></nav></div>
+<div class="page-narrow">
+
+  <header class="hero">
+    <p class="breadcrumb"><a href="/">暮らしサポ</a> ＞ <a href="../index.html">おひっこし計算帯</a> ＞ 光熱費の地域差</p>
+    <span class="eyebrow">データで見る</span>
+    <h1>引っ越し先の光熱費は地域でどれくらい違う？全国52都市の家計調査データで比較</h1>
+    <p>引っ越し先を決めるとき、家賃は比べても、光熱費まで比べる人は多くありません。総務省統計局の「家計調査」から、電気・ガス・灯油・上下水道の支出を都市ごとに整理しました。</p>
+    <div class="meta"><span>公開日：2026年11月4日</span><span>最終更新日：2026年11月4日</span><span>データの確認日：2026年11月4日</span></div>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-title">目次</div>
+    <ol>
+      <li><a href="#data">使ったデータと、読むときの注意</a></li>
+      <li><a href="#national">全国平均は、月に約23,800円</a></li>
+      <li><a href="#region">寒冷地・標準・温暖地で、どれくらい違うか</a></li>
+      <li><a href="#city">同じ区分の中でも、都市で差がある</a></li>
+      <li><a href="#gas">ガスの種類は、都市によって違う</a></li>
+      <li><a href="#use">引っ越し先の光熱費を見積もるときの使い方</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+    </ol>
+  </nav>
+
+  <section class="article">
+
+    <p class="lead">「寒い地域は光熱費が高い」とよく言われます。実際にどれくらい高いのか、同じ地域区分の中でも差があるのかを、公的な統計の数字で確かめます。結論を先に書くと、寒冷地は標準の約1.2倍、温暖地は約0.87倍でした。ただし、標準に分けられる都市の中にも、寒冷地と同じ水準の都市があります。</p>
+
+    <h2 id="data">1. 使ったデータと、読むときの注意</h2>
+    <ul class="checklist">
+      <li><strong>データの出どころ</strong>：総務省統計局「家計調査（二人以上の世帯）品目別都道府県庁所在市及び政令指定都市ランキング（2023年〜2025年平均）」。1世帯あたりの年間支出金額です。</li>
+      <li><strong>使った品目</strong>：電気代、都市ガス、プロパンガス、灯油、上下水道料の5つ。この記事ではこの5つを足した金額を「光熱費」と呼びます。家計調査の「光熱・水道」という分類とは、含まれる品目が完全には一致しない場合があります。</li>
+      <li><strong>月額の出し方</strong>：年間の支出を12で割っています。実際の請求額は、季節によって上下します。</li>
+      <li><strong>対象の都市</strong>：都道府県庁所在市（東京は東京都区部）と、それ以外の政令指定都市（川崎市、相模原市、浜松市、堺市、北九州市）の、合わせて52都市です。</li>
+      <li><strong>地域区分</strong>：おひっこし計算帯のシミュレーターと同じです。北海道・東北を寒冷地（7都市）、九州・沖縄を温暖地（9都市）、それ以外を標準（36都市）としました。区分の数字は、都市の単純平均です。人口の多さは考慮していません。</li>
+    </ul>
+    <div class="callout">
+      <div class="callout-title">二人以上の世帯のデータです</div>
+      この記事の数字は、二人以上の世帯の平均です。一人暮らしの世帯の数字ではありません。世帯の人数が少ないほど支出は小さくなるのが一般的なので、一人暮らしの方は、ここに出てくる金額より少なくなることが多いと考えられます。
+    </div>
+
+    <h2 id="national">2. 全国平均は、月に約23,800円</h2>
+    <p>5品目を足すと、全国平均は年間285,461円、月額に直すと約23,800円です。最も大きいのは電気代で、全体の約53%を占めます。</p>
+    <div class="tscroll"><table class="datatable">
+<caption>全国平均。二人以上の世帯・1世帯あたり・2023〜2025年平均</caption>
+<tr><th>品目</th><th>年間の支出（円）</th><th>月額に直した目安（円）</th></tr>
+<tr><td>電気代</td><td class="num">149,965</td><td class="num">12,497</td></tr>
+<tr><td>都市ガス</td><td class="num">39,035</td><td class="num">3,253</td></tr>
+<tr><td>プロパンガス</td><td class="num">20,309</td><td class="num">1,692</td></tr>
+<tr><td>灯油</td><td class="num">15,094</td><td class="num">1,258</td></tr>
+<tr><td>上下水道料</td><td class="num">61,058</td><td class="num">5,088</td></tr>
+<tr><td><strong>5品目の合計</strong></td><td class="num"><strong>285,461</strong></td><td class="num"><strong>23,788</strong></td></tr>
+</table></div>
+
+    <h2 id="region">3. 寒冷地・標準・温暖地で、どれくらい違うか</h2>
+    <p>地域区分ごとに平均すると、寒冷地は月28,900円、標準は月23,900円、温暖地は月20,700円でした。標準との差は、寒冷地が約5,000円多く、温暖地が約3,200円少ない、という結果です。</p>
+    <div class="tscroll"><table class="datatable">
+<caption>地域区分ごとの、5品目合計の月額（都市の単純平均。百円未満を四捨五入）</caption>
+<tr><th>区分</th><th>対象</th><th>都市数</th><th>月額（円）</th><th>標準を1としたときの比</th></tr>
+<tr><td>寒冷地</td><td>北海道・東北</td><td class="num">7</td><td class="num">28,900</td><td class="num">1.21</td></tr>
+<tr><td>標準</td><td>関東・中部・近畿・中国・四国</td><td class="num">36</td><td class="num">23,900</td><td class="num">1.00</td></tr>
+<tr><td>温暖地</td><td>九州・沖縄</td><td class="num">9</td><td class="num">20,700</td><td class="num">0.87</td></tr>
+</table></div>
+    <p>どの品目が差を生んでいるのかを見ると、いちばん差が大きいのは灯油です。寒冷地の灯油は月4,330円で、標準（月840円）の約5倍、温暖地（月460円）の約9倍でした。電気代にも差があり、寒冷地は月14,160円、標準は月12,820円、温暖地は月10,670円です。</p>
+    <div class="tscroll"><table class="datatable">
+<caption>地域区分ごとの、品目別の月額（円。十円未満を四捨五入）</caption>
+<tr><th>区分</th><th>電気代</th><th>都市ガス</th><th>プロパンガス</th><th>灯油</th><th>上下水道料</th></tr>
+<tr><td>寒冷地</td><td class="num">14,160</td><td class="num">2,300</td><td class="num">2,370</td><td class="num">4,330</td><td class="num">5,770</td></tr>
+<tr><td>標準</td><td class="num">12,820</td><td class="num">3,500</td><td class="num">1,510</td><td class="num">840</td><td class="num">5,230</td></tr>
+<tr><td>温暖地</td><td class="num">10,670</td><td class="num">2,710</td><td class="num">1,910</td><td class="num">460</td><td class="num">4,940</td></tr>
+</table></div>
+
+    <h2 id="city">4. 同じ区分の中でも、都市で差がある</h2>
+    <p>52都市の中で月額が最も大きいのは山形市の約31,000円、最も小さいのは北九州市の約18,500円で、その差は約1.7倍です。</p>
+    <div class="tscroll"><table class="datatable">
+<caption>5品目合計の月額が大きい都市・小さい都市（百円未満を四捨五入）</caption>
+<tr><th>順位</th><th>都市</th><th>区分</th><th>月額（円）</th></tr>
+<tr><td>高い方 1位</td><td>山形市</td><td>寒冷地</td><td class="num">31,000</td></tr>
+<tr><td>高い方 2位</td><td>青森市</td><td>寒冷地</td><td class="num">30,900</td></tr>
+<tr><td>高い方 3位</td><td>秋田市</td><td>寒冷地</td><td class="num">29,600</td></tr>
+<tr><td>高い方 4位</td><td>盛岡市</td><td>寒冷地</td><td class="num">29,100</td></tr>
+<tr><td>高い方 5位</td><td>富山市</td><td>標準</td><td class="num">28,800</td></tr>
+<tr><td>低い方 1位</td><td>北九州市</td><td>温暖地</td><td class="num">18,500</td></tr>
+<tr><td>低い方 2位</td><td>宮崎市</td><td>温暖地</td><td class="num">19,000</td></tr>
+<tr><td>低い方 3位</td><td>神戸市</td><td>標準</td><td class="num">20,100</td></tr>
+<tr><td>低い方 4位</td><td>大分市</td><td>温暖地</td><td class="num">20,200</td></tr>
+<tr><td>低い方 5位</td><td>鹿児島市</td><td>温暖地</td><td class="num">20,400</td></tr>
+</table></div>
+    <p>注目したいのは、「標準」の区分に入る都市の中にも、寒冷地と同じ水準の都市があることです。富山市（約28,800円）、松江市（約28,200円）、福井市（約28,000円）は、寒冷地の平均（約28,900円）とほぼ同じでした。逆に、寒冷地の仙台市は約24,600円で、標準の中央値（約23,300円）に近い水準です。</p>
+    <div class="tscroll"><table class="datatable">
+<caption>「標準」区分の中で月額が大きい都市と、小さい都市（百円未満を四捨五入）</caption>
+<tr><th></th><th>都市</th><th>月額（円）</th></tr>
+<tr><td>高い方</td><td>富山市</td><td class="num">28,800</td></tr>
+<tr><td>高い方</td><td>松江市</td><td class="num">28,200</td></tr>
+<tr><td>高い方</td><td>福井市</td><td class="num">28,000</td></tr>
+<tr><td>高い方</td><td>新潟市</td><td class="num">27,200</td></tr>
+<tr><td>低い方</td><td>和歌山市</td><td class="num">21,100</td></tr>
+<tr><td>低い方</td><td>松山市</td><td class="num">21,000</td></tr>
+<tr><td>低い方</td><td>神戸市</td><td class="num">20,100</td></tr>
+</table></div>
+    <div class="callout">
+      <div class="callout-title">地域区分は、あくまで目安です</div>
+      「北海道・東北は高く、九州・沖縄は低い」という大きな傾向は、データでも確認できました。ただ、その中で何円になるかは、都市によって、また住む家の設備によっても変わります。区分の平均だけで判断せず、引っ越し先の都市の数字も見てください。
+    </div>
+
+    <h2 id="gas">5. ガスの種類は、都市によって違う</h2>
+    <p>ガスの支出の出方は、都市によってかなり違います。東京都区部と大阪市は、ほぼ都市ガスの支出で、プロパンガスの支出はごくわずかです。一方、札幌市と那覇市は、プロパンガスの支出が都市ガスを上回っています。</p>
+    <div class="tscroll"><table class="datatable">
+<caption>ガスの支出の内訳の例（月額・円）</caption>
+<tr><th>都市</th><th>都市ガス</th><th>プロパンガス</th></tr>
+<tr><td>東京都区部</td><td class="num">5,451</td><td class="num">113</td></tr>
+<tr><td>大阪市</td><td class="num">6,459</td><td class="num">92</td></tr>
+<tr><td>札幌市</td><td class="num">2,725</td><td class="num">3,198</td></tr>
+<tr><td>那覇市</td><td class="num">2,314</td><td class="num">2,985</td></tr>
+</table></div>
+    <p>この表だけで、どちらのガスが安い、高いと言うことはできません。ただ、同じ地域でも、物件のガスの種類（都市ガス、プロパンガス、オール電化など）によって、光熱費の出方は変わりえます。物件を選ぶときは、募集図面や不動産会社への確認で、ガスの種類と給湯・暖房の設備を確かめておくと、入居後の光熱費をイメージしやすくなります。</p>
+
+    <h2 id="use">6. 引っ越し先の光熱費を見積もるときの使い方</h2>
+    <ul class="checklist">
+      <li><strong>引っ越し先の都市の数字を見る。</strong>上の表に、52都市の月額を載せています。表にない市町村に引っ越す場合は、同じ都道府県・近い気候の都市を参考にします。出典の総務省統計局のページから、52都市すべての数字を確認できます。</li>
+      <li><strong>世帯の人数で調整する。</strong>この記事の数字は二人以上の世帯の平均です。一人暮らしなら、これより少なく見積もるのが現実的です。</li>
+      <li><strong>北陸・山陰は、標準の区分でも高めに見る。</strong>富山市・福井市・松江市は、寒冷地並みの水準でした。</li>
+      <li><strong>入居後の実績を記録する。</strong>最初の1年の請求額を月ごとに記録しておくと、次に引っ越すとき、自分の暮らし方に合った見積もりができます。</li>
+    </ul>
+    <p>おひっこし計算帯のシミュレーターでは、光熱費を、世帯の目安額に気候区分の係数（寒冷地×1.15、標準×1.0、温暖地×0.9）をかけて出しています。目安額と係数は、運営者が丸めて設定した簡易な値で、公的統計の値そのものではありません。今回の集計（寒冷地1.21、温暖地0.87）と比べると、温暖地はほぼ同じ水準で、寒冷地の係数はやや小さめです。引っ越し先の都市の数字が、ツールの結果と大きく違うときは、月々の生活費もその分ずれる可能性があります。</p>
+
+    <div class="disclaimer">
+      この記事の数字は、総務省統計局「家計調査」の公表値（2023〜2025年平均）をもとにした集計です。実際の光熱費は、世帯の人数、住まいの設備、契約する会社・料金プラン、季節や年ごとの料金の変動などによって変わります。
+    </div>
+
+    <h2 id="faq">7. よくある質問</h2>
+    <div class="faq-item">
+      <p class="q">一人暮らしの光熱費は、いくらくらいですか？</p>
+      <p class="a">この記事のデータは二人以上の世帯のもので、一人暮らし（単身世帯）の数字は含まれません。単身世帯の集計は、家計調査の別の表で公表されています。気になる方は、総務省統計局のページで確認してください。なお、シミュレーターの光熱費の目安（一人暮らしは月12,800円）は、運営者が丸めて設定した値で、公的統計の値そのものではありません。</p>
+    </div>
+    <div class="faq-item">
+      <p class="q">夏と冬では、光熱費はどれくらい変わりますか？</p>
+      <p class="a">この記事の月額は、年間の支出を12で割った平均です。実際の請求額は、冷暖房を使う季節に増え、使わない季節に減るのが一般的です。季節ごとの金額は、この記事のデータからは分かりません。</p>
+    </div>
+    <div class="faq-item">
+      <p class="q">電気やガスの料金が変わると、この数字も変わりますか？</p>
+      <p class="a">変わります。この数字は2023〜2025年の平均で、その期間の料金や使い方が反映されています。引っ越すときの実際の料金は、契約する会社とプランで確認してください。</p>
+    </div>
+
+    <ol class="source-list">
+      <li><a href="https://www.stat.go.jp/data/kakei/5.htm" target="_blank" rel="noopener">総務省統計局 家計調査（二人以上の世帯）品目別都道府県庁所在市及び政令指定都市ランキング（2023年〜2025年平均）</a>（2026年11月4日に確認。この記事では、同ページの「食料以外」の表を使いました）</li>
+      <li>数字の加工：各品目の年間支出を12で割って月額にし、5品目を足しました。地域区分の平均は、都市の単純平均です。</li>
+    </ol>
+  </section>
+
+  <div class="related-tools">
+    <div class="label">TOOL</div>
+    <div class="title">この記事の内容を、あなたの条件で試算する</div>
+    <p>家賃や地域を入力するだけで、初期費用と入居後の生活費の総額が自動で計算されます。</p>
+    <a class="btn" href="../index.html">シミュレーターを使う</a>
+  </div>
+
+  <nav class="article-nav">
+    <a href="shinsotsu.html"><span class="cat">GUIDE</span>新卒・一人暮らしガイド</a>
+    <a href="dousei.html"><span class="cat">GUIDE</span>同棲・二人暮らしガイド</a>
+    <a href="family.html"><span class="cat">GUIDE</span>ファミリーガイド</a>
+    <a href="../index.html"><span class="cat">TOOL</span>シミュレーターに戻る</a>
+  </nav>
+
+  <footer>
+    <span>おひっこし計算帯｜新生活の総費用シミュレーター</span>
+    <span><a href="/privacy-policy.html">プライバシーポリシー・免責事項</a>｜<a href="/">暮らしサポ トップ</a>｜<a href="/about.html">運営者情報</a>｜<a href="/editorial.html">編集方針・更新履歴</a>｜<a href="/ideco-nisa-simulator/">いくら積み立て帳（iDeCo・NISA）</a></span>
+  </footer>
+</div>
+</body>
+</html>
